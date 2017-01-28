@@ -1,0 +1,30 @@
+/*----- Create page style -----*/
+
+.create-page{
+    .image-wrapp{
+        width: 200px;
+        position: relative;
+        .close-btn{
+            display: none;
+            width: 20px;
+            height: 20px;
+            background: url("../img/close_btn.png");
+            background-size: contain;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+        img{
+           width: 100%;
+        }
+        &:hover > .close-btn{
+            display: block;
+        }
+    }
+    .prev-image{
+        width: 200px;
+    }
+}
+
+/*----- END Create page style -----*/

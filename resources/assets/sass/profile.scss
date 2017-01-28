@@ -1,0 +1,106 @@
+/*----- Profile page style -----*/
+
+.tab-content, .tab-message-content{
+    min-height: 320px;
+    padding: 10px 15px;
+}
+.message-tab{
+    overflow: auto;
+    a{
+        text-decoration: none;
+    }
+    .photo{
+        position: relative;
+    }
+    .count{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: red;
+        text-align: center;
+        position: absolute;
+        top: -9px;
+        right: 7px;
+        color: #fff;
+    }
+    .readed{
+        h4{
+            color: darkmagenta;
+        }
+    }
+}
+.message-tab ul{
+    padding: 0;
+}
+.message-tab ul li{
+    display: inline-block;
+    padding: 10px 15px;
+}
+.message-tab ul li:first-of-type{
+    border-right: 1px solid #ddd;
+}
+.message-tab ul li a{
+    text-decoration: none;
+}
+.message-tab ul li.active a{
+    color: #555;
+}
+
+.new-post{
+    padding: 16px 0;
+}
+.posts .post {
+    margin-bottom: 30px;
+}
+.posts .post .info{
+    color: #aaa;
+    font-style: italic;
+}
+
+.profile-prod ul{
+    padding-left: 0;
+}
+.profile-prod ul li{
+    display: inline-block;
+}
+
+.profile-product{
+    padding-bottom: 30px;
+    .tabs-block{
+        margin-top: 30px;
+    }
+    .tab-content{
+        border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        padding-top: 30px;
+        .pagination-wrapp{
+            text-align: center;
+        }
+    }
+    .photo{
+        height: 130px;
+        margin-bottom: 20px;
+    }
+    .content{
+        height: 130px;
+        ul{
+            padding-left: 0;
+            li{
+                display: inline-block;
+                margin-right: 5px;
+                padding-right: 5px;
+                border-right: 1px solid #c0c0c0;
+                &:last-of-type{
+                    margin-right: 0;
+                }
+                a{
+                    text-decoration: none;
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
+/*----- End Profile page style -----*/

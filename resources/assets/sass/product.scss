@@ -1,0 +1,43 @@
+.product-page {
+    color: #565a5c;
+    h4{
+        font-size: 17px;
+    }
+    .slider-block{
+        position: relative;
+        .prev{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            background: url("../img/arrows.png");
+            background-size: cover;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .next{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            background: url("../img/arrows.png");
+            background-size: cover;
+            background-position: 48px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            z-index: 1;
+            cursor: pointer;
+        }
+    }
+    .message{
+        margin-top: 50px;
+        textarea{
+            resize: none;
+        }
+    }
+    
+}
