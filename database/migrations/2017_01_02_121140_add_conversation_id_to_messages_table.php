@@ -13,7 +13,7 @@ class AddConversationIdToMessagesTable extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->integer('conversation_id')->after('advertisement_id');
+            $table->integer('conversation_id')->after('product_id');
         });
     }
 
