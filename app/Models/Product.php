@@ -52,6 +52,6 @@ class Product extends Model
             $query->whereBetween('price', array($_GET['price_from'], $_GET['price_till']));
         }
 
-        return count($query->get()) > 0 ? $query->orderBy('created_at', 'desc')->paginate(12) : "Совпадений не найдено";
+        return count($query->get()) > 0 ? $query->orderBy('updated_at', 'desc')->paginate(12) : "Совпадений не найдено";
     }
 }

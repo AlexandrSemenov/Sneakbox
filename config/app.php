@@ -158,6 +158,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ImageUploadProvider::class,
         App\Providers\SlugServiceProvider::class,
+        App\Providers\CleanProductsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
     ],

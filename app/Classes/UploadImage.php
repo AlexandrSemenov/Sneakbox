@@ -8,7 +8,6 @@ class UploadImage
     {
         if($image)
         {
-
             //текущая дата
             $current_year = date("Y");
             $current_month = date("m");
@@ -22,7 +21,7 @@ class UploadImage
             $image_size = $file->getClientSize();
             $image_mime_type = $file->getMimeType();
 
-            //Доступные расштрения файлов
+            //Доступные расширения файлов
             $allowed = array('jpg', 'png', 'jpeg');
 
             if(in_array($image_ext, $allowed)){
@@ -48,7 +47,6 @@ class UploadImage
 
                             $src_x = ($width_orig > $height_orig)? ($width_orig-$height_orig)/2 : 0;
 
-
                             // прировнять высоту и ширину изображения
                             if($width_orig < $height_orig){
                                 $height_orig = $width_orig;
@@ -65,7 +63,6 @@ class UploadImage
                                 $height = $width/$ratio_orig;
                             }
 
-
                             if($image_mime_type == "image/jpeg" || $image_mime_type == "image/pjpeg" ){
                                 //получить id изображениея
                                 $image_old = imagecreatefromjpeg($image_location);
@@ -77,7 +74,6 @@ class UploadImage
                             //создать новое изображение
                             $image_new = imagecreatetruecolor($width,$height);
 
-
                             //копировать и изменить размеры изображения
                             imagecopyresampled($image_new,$image_old, 0, 0, $src_x, 0,$width,$height,$width_orig,$height_orig);
                             //сохранить новое изображение
@@ -85,7 +81,7 @@ class UploadImage
 
                             return "/uploads/$current_year/$current_month/$current_day/" . $image_name_new;
                         }else{
-//                            dd('изображение не загруженно');
+                            dd('изображение не загруженно');
                         }
                     }
                 }
@@ -131,7 +127,6 @@ class UploadImage
                 }
 
             }
-
         }else{
             $gallery = new Gallery;
             $gallery->image_path = "/uploads/default/default-placeholder-big.png";

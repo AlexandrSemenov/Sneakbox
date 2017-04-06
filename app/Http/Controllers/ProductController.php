@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use Auth;
 use App\Classes\UploadImage;
 use App\Classes\Slug;
 use App\Models\Gallery;
@@ -9,9 +11,9 @@ use App\Models\Product;
 use App\Models\ProductCreateForm;
 use Illuminate\Http\Request;
 use App\Classes\QueryParams;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
-use Auth;
+use App\Classes\CleanProductsService;
 
 
 class ProductController extends Controller
@@ -26,7 +28,7 @@ class ProductController extends Controller
             /**
              * если get массив пустой
              */
-            $products = Product::where('active','=',1)->orderBy('created_at', 'desc')->paginate(12);
+            $products = Product::where('active','=',1)->orderBy('updated_at', 'desc')->paginate(12);
         }
         $queryParams = new QueryParams();
         $form = new ProductCreateForm();
@@ -107,11 +109,10 @@ class ProductController extends Controller
                     $images = Gallery::where('product_id', $product->id)->get();
 
                     return view('product.edit', ['product' => $product, 'images' => $images]);
-                }else{
-                    return view('product.wrong');
                 }
+                return view('product.wrong');
             }
-                return redirect()->route('login.index');
+            return redirect()->route('login.index');
         }
         return redirect()->route('product.index');
 
@@ -186,7 +187,8 @@ class ProductController extends Controller
 
         return redirect()->route('login.index');
     }
-    public function productItem($alias)
+
+    public function showProduct($alias)
     {
         if(count(Product::select('id')->where('alias','=',$alias)->get())>0)
         {
@@ -195,5 +197,88 @@ class ProductController extends Controller
             return view('product.item', ['product' => $product, 'galleries' => $galleries]);
         }
         return redirect()->route('product.index');
+    }
+
+    public function updateProductDate($alias)
+    {
+        $currentDate = new \DateTime();
+        $currentDate = $currentDate->format('Y-m-d H:i:s');
+
+        $token = Input::get('token');
+
+        $product = Product::where('alias', '=', $alias)->first();
+
+        if($token == $product->token){
+            /**
+             * генерируем новый токен
+             */
+            $token = hash_hmac('sha256', str_random(40), config('app.key'));
+
+            $product->updated_at = $currentDate;
+            $product->token = $token;
+            $product->update();
+
+            /**
+             * TODO вернуть ответ при успешном обновлении
+             */
+            var_dump("Ваше объявление успешно обновлено");
+        }else{
+            var_dump("Вы уже обновили объявление");
+        }
+        /**
+         * TODO вернуть ответ при не удачном обновлении
+         */
+
+    }
+
+    public function test(CleanProductsService $cleanProducts)
+    {
+
+        $currentDate = new \DateTime();
+        $currentDate->modify('-30 day');
+        $date = $currentDate->format('Y-m-d');
+        echo "<pre>"; var_dump($date); die();
+        $products = Product::where('updated_at', 'like', $date.'%')->with('user')->get();
+
+        $emails = array();
+        echo "<pre>";
+        foreach($products as $product)
+        {
+            $token = hash_hmac('sha256', str_random(40), config('app.key'));
+
+            /**
+             * TODO записать токет в таблицу Products в поле token (предварительно создать поле token)
+             */
+            $product = Product::where('id', '=', $product->id)->first();
+            $product->token = $token;
+            $product->timestamps = false;
+            $product->update();
+
+            /**
+             * TODO добавить в индекс token в массив emails
+             */
+
+            $emails[] =[
+                'name' => $product->user->name,
+                'email' => $product->user->email,
+                'slug' => $product->alias,
+                'token' => $token
+            ];
+
+        }
+
+        if(count($products) > 0){
+            foreach($emails as $email)
+            {
+                Mail::send('email.renewal', array('email' => $email), function($message) use ($email){
+                    $message->from('info.sneakbox@gmail.com', 'Sneak.Box info');
+                    $message->to($email['email'], $email['name'])->subject('Ваше объявление будет удалено через 10 дней');
+                });
+            }
+        }
+
+
+
+        var_dump('сообщения отправлены');
     }
 }

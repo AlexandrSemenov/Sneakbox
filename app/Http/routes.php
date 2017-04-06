@@ -57,8 +57,9 @@ Route::get('/product/create', ['uses' => 'ProductController@createProduct', 'as'
 Route::post('/product/save', ['uses' => 'ProductController@saveProduct', 'as' => 'product.save', 'middleware' => 'auth']);
 Route::get('/product/edit/{alias}', ['uses' => 'ProductController@editProduct', 'as' => 'product.edit', 'middleware' => 'auth']);
 Route::post('/product/update/{alias}', ['uses' => 'ProductController@updateProduct', 'as' => 'product.update']);
+Route::get('product/updated/{alias}', ['uses' => 'ProductController@updateProductDate']);
 
-Route::get('/product/{alias}', ['uses' => 'ProductController@productItem', 'as' => 'product.item']);
+Route::get('/product/{alias}', ['uses' => 'ProductController@showProduct', 'as' => 'product.item']);
 
 /**
  * Сообщения
@@ -69,3 +70,9 @@ Route::get('/profile/messages', ['uses' => 'MessageController@messagesReceived',
 Route::get('/profile/messages/send', ['uses' => 'MessageController@messagesSend', 'as' => 'messages.send', 'middleware' => 'auth']);
 Route::get('/messages/show/{id}', ['uses' => 'MessageController@showMessage', 'as' => 'message.show', 'middleware' => ['auth', 'message']]);
 Route::post('/message/answer', ['uses' => 'MessageController@answerMessage', 'as' => 'message.answer']);
+
+/**
+ * Test
+ */
+
+Route::get('/test', ['uses' => 'ProductController@test']);
