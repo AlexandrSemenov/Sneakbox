@@ -8,7 +8,7 @@
 
 <div>
     <h3>Ваше объявление будет удалено через 10 дней</h3>
-    <p>Если вы не хотите чтобы ваше объявление было удалено, перейдите по ссылке <a href="{!! url("{$email['url']}") !!}roduct/updated/{{$email['slug']}}?token={{$email['token']}}">{!! url("{$email['url']}") !!}product/updated/{{$email['slug']}}?token={{$email['token']}}</a> </p>
+    <p>Если вы не хотите чтобы ваше объявление было удалено, перейдите по ссылке <a href="{!! url("{$email['url']}") !!}/product/updated/{{$email['slug']}}?token={{$email['token']}}">{!! url("{$email['url']}") !!}/product/updated/{{$email['slug']}}?token={{$email['token']}}</a> </p>
 </div>
 
 </body>
