@@ -233,52 +233,9 @@ class ProductController extends Controller
 
     public function test(CleanProductsService $cleanProducts)
     {
-
         $currentDate = new \DateTime();
         $currentDate->modify('-30 day');
         $date = $currentDate->format('Y-m-d');
-        echo "<pre>"; var_dump($date); die();
-        $products = Product::where('updated_at', 'like', $date.'%')->with('user')->get();
-
-        $emails = array();
-        echo "<pre>";
-        foreach($products as $product)
-        {
-            $token = hash_hmac('sha256', str_random(40), config('app.key'));
-
-            /**
-             * TODO записать токет в таблицу Products в поле token (предварительно создать поле token)
-             */
-            $product = Product::where('id', '=', $product->id)->first();
-            $product->token = $token;
-            $product->timestamps = false;
-            $product->update();
-
-            /**
-             * TODO добавить в индекс token в массив emails
-             */
-
-            $emails[] =[
-                'name' => $product->user->name,
-                'email' => $product->user->email,
-                'slug' => $product->alias,
-                'token' => $token
-            ];
-
-        }
-
-        if(count($products) > 0){
-            foreach($emails as $email)
-            {
-                Mail::send('email.renewal', array('email' => $email), function($message) use ($email){
-                    $message->from('info.sneakbox@gmail.com', 'Sneak.Box info');
-                    $message->to($email['email'], $email['name'])->subject('Ваше объявление будет удалено через 10 дней');
-                });
-            }
-        }
-
-
-
-        var_dump('сообщения отправлены');
+        echo "<pre>"; var_dump($cleanProducts->emailComponents()); die();
     }
 }

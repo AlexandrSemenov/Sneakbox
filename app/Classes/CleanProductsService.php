@@ -5,6 +5,7 @@ namespace App\Classes;
 use Mail;
 use App\Models\Gallery;
 use App\Models\Product;
+use Illuminate\Support\Facades\Config;
 
 class CleanProductsService
 {
@@ -13,6 +14,7 @@ class CleanProductsService
     protected $emailComponents;
     protected $deleteDate;
     protected $productsDelete;
+    protected $url;
 
     public function __construct()
     {
@@ -21,6 +23,7 @@ class CleanProductsService
         $this->emailComponents = $this->emailComponents();
         $this->deleteDate = $this->getDeleteEmailDate();
         $this->productsDelete = $this->getProductsForDelete();
+        $this->url = Config::get('app.url');
     }
 
     public function getNotificationDate()
@@ -79,7 +82,8 @@ class CleanProductsService
                 'name' => $product->user->name,
                 'email' => $product->user->email,
                 'slug' => $product->alias,
-                'token' => $token
+                'token' => $token,
+                'url' => $this->url
             ];
         }
         return $components;
