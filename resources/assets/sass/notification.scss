@@ -1,0 +1,26 @@
+/*----- Notification page style -----*/
+
+.notification-block{
+    width: 300px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    .message{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        text-align: center;
+        p{
+            margin: 0;
+        }
+    }
+}
+
+/*----- End Notification page style -----*/

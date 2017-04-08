@@ -221,13 +221,12 @@ class ProductController extends Controller
             /**
              * TODO вернуть ответ при успешном обновлении
              */
-            var_dump("Ваше объявление успешно обновлено");
-        }else{
-            var_dump("Вы уже обновили объявление");
+            return view('notification.success-update-product');
         }
         /**
          * TODO вернуть ответ при не удачном обновлении
          */
+        return view('notification.error-update-product');
 
     }
 
@@ -236,6 +235,5 @@ class ProductController extends Controller
         $currentDate = new \DateTime();
         $currentDate->modify('-30 day');
         $date = $currentDate->format('Y-m-d');
-        echo "<pre>"; var_dump($cleanProducts->emailComponents()); die();
     }
 }
