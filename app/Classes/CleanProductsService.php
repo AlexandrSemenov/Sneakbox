@@ -122,7 +122,9 @@ class CleanProductsService
                 unlink('public' . $image->image_path);
             }
         }
-        unlink('public' . $product->image);
+        if($product->image != '/uploads/default/default-placeholder-small.png'){
+            unlink('public' . $product->image);
+        }
     }
 
     protected function getGalleryImages($product)
