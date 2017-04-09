@@ -145,7 +145,10 @@ class ProductController extends Controller
             $product->size_id = $request['size'];
             if(!empty($request['image']))
             {
-                unlink(realpath('.'.$product->image));
+                if($product->image != '/uploads/default/default-placeholder-small.png'){
+                    unlink(realpath('.'.$product->image));
+                }
+
                 $product->image = $uploadimage->uploadImage($request['image']);
             }
             $product->user_id = Auth::user()->id;
@@ -163,7 +166,9 @@ class ProductController extends Controller
                 {
                     if(!empty($oldimage))
                     {
-                       unlink(realpath('.'.$oldimage));
+                        if($oldimage != '/uploads/default/default-placeholder-big.png'){
+                            unlink(realpath('.'.$oldimage));
+                        }
                     }
 
                 }
