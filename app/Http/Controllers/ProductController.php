@@ -150,7 +150,7 @@ class ProductController extends Controller
             }
             $product->user_id = Auth::user()->id;
             $product->active = $request['checked']?'1':'0';
-
+            $product->timestamps = false;
             $product->update();
 
             $images = $request->gallery;

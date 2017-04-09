@@ -361,6 +361,35 @@ var galleryImage = new Vue({
 
 /*----- END Подгружаем фото галереи -----*/
 
+var galleryImageEditMain = new Vue({
+    el: '#gallery-image-edit-main',
+    data: {
+        image: $('#gallery-image-edit-main').attr('data-img')
+    },
+    methods: {
+        onFileChange: function(e){
+            var file = e.target.files;
+            (!file.length)? false : this.createImage(file[0]);
+            $(e.target).hide();
+        },
+        createImage: function(file){
+
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = function(e){
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        removeImage: function(){
+            this.image = '';
+            $('#gallery-image-edit-main input[type="file"]').show().val('');
+        }
+    }
+});
+
 /*----- Подгружаем фото галереи (страница редактирования)-----*/
 
 var galleryImageEdit0 = new Vue({

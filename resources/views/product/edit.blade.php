@@ -48,10 +48,18 @@
                     </select>
                 </div>
                 <label>Главное изображение</label>
-                <div class="form-group">
-                    <img src="{{$product->image}}" alt="image" style="margin-bottom: 15px;">
-                    <input type="file" name="image">
-                </div>
+                    <div id="gallery-image-edit-main" data-img="{{$product->image}}" class="form-group image-item">
+                        <div v-if="!image"></div>
+                        <div v-else>
+                            <div class="image-wrapp">
+                                <div class="close-btn" v-on:click="removeImage"></div>
+                                <img class="img-responsive" v-bind:src="image" alt="image">
+                                {{--<img src="{{$product->image}}" alt="image" style="margin-bottom: 15px;">--}}
+                            </div>
+                        </div>
+                        <input class="gallery" type="file" v-on:change="onFileChange" name="image">
+                    {{--<input type="file" name="image">--}}
+                    </div>
 
                 <label>Фото галереи</label>
                 @foreach($images as $key => $image)
