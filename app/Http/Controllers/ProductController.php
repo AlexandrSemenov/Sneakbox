@@ -91,10 +91,7 @@ class ProductController extends Controller
 
             return redirect()->route('myprofile.index');
         }
-
         return redirect()->route('login.index');
-
-
     }
 
     public function editProduct($alias)
@@ -115,7 +112,6 @@ class ProductController extends Controller
             return redirect()->route('login.index');
         }
         return redirect()->route('product.index');
-
     }
 
     public function updateProduct(Request $request, UploadImage $uploadimage, $alias)
@@ -186,10 +182,8 @@ class ProductController extends Controller
                 }
 
             }
-
             return redirect()->back();
         }
-
         return redirect()->route('login.index');
     }
 
@@ -213,26 +207,22 @@ class ProductController extends Controller
 
         $product = Product::where('alias', '=', $alias)->first();
 
-        if($token == $product->token){
-            /**
-             * генерируем новый токен
-             */
-            $token = hash_hmac('sha256', str_random(40), config('app.key'));
+        if($product){
+            if($token == $product->token){
+                /**
+                 * генерируем новый токен
+                 */
+                $token = hash_hmac('sha256', str_random(40), config('app.key'));
 
-            $product->updated_at = $currentDate;
-            $product->token = $token;
-            $product->update();
+                $product->updated_at = $currentDate;
+                $product->token = $token;
+                $product->update();
 
-            /**
-             * TODO вернуть ответ при успешном обновлении
-             */
-            return view('notification.success-update-product');
+                return view('notification.success-update-product');
+            }
+            return view('notification.error-update-product');
         }
-        /**
-         * TODO вернуть ответ при не удачном обновлении
-         */
-        return view('notification.error-update-product');
-
+        return view('notification.deleted-product');
     }
 
     public function test(CleanProductsService $cleanProducts)
