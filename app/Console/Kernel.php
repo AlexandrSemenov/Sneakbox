@@ -28,7 +28,6 @@ class Kernel extends ConsoleKernel
 //        $schedule->command('inspire')
 //            ->hourly();
 
-//        $schedule->command('ProductsTracing')->dailyAt('9:00');
-        $schedule->command('ProductsTracing')->everyMinute();
+        $schedule->command('ProductsTracing')->dailyAt('9:00');
     }
 }
