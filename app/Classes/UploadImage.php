@@ -115,7 +115,9 @@ class UploadImage
                     $upload_dir = "uploads/$current_year/$current_month/$current_day/";
 
                     if(!is_dir($upload_dir)){
+                        $old = umask(0);
                         mkdir($upload_dir, 0777, true);
+                        umask($old);
                     }
                     if($image->move($image_destination, $new_image_name)){
                         $gallery = new Gallery;
@@ -152,7 +154,9 @@ class UploadImage
             $upload_dir = "uploads/$current_year/$current_month/$current_day/";
 
             if(!is_dir($upload_dir)){
+                $old = umask(0);
                 mkdir($upload_dir, 0777, true);
+                umask($old);
             }
 
             $image->move($image_destination, $new_image_name);
