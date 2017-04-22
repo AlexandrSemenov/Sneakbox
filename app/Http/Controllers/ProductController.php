@@ -195,7 +195,7 @@ class ProductController extends Controller
             $galleries = Gallery::select('image_path')->where('product_id', $product->id)->get();
             return view('product.item', ['product' => $product, 'galleries' => $galleries]);
         }
-        return redirect()->route('product.index');
+        return response()->view('errors.404', [], 404);
     }
 
     public function updateProductDate($alias)
