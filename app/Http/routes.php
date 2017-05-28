@@ -43,6 +43,7 @@ Route::get('/admin/dashboard', ['uses' => 'AdminController@dashboard', 'as' => '
 Route::get('/profile', ['uses' => 'ProfileController@index', 'as' => 'myprofile.index', 'middleware' => 'auth']);
 Route::post('/profile/userupdate', ['uses' => 'ProfileController@userUpdate', 'as' => 'profile.update']);
 Route::post('/profile/passupdate', ['uses' => 'ProfileController@passUpdate', 'as' => 'pass.update']);
+Route::post('/profile/notifyupdate', ['uses' => 'ProfileController@notifyUpdate', 'as' => 'notify.update']);
 
 
 

@@ -29,7 +29,7 @@
                 </div>
                 <div class="message-block">
 
-                    <h4 for="">Свяжитесь с автором объявления: </h4>
+                    <h4>Свяжитесь с автором объявления: </h4>
                     @if(\Illuminate\Support\Facades\Auth::user())
 
                     @if(!empty($errors))

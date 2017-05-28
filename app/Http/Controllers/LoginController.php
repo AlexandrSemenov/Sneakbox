@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,6 +48,10 @@ class LoginController extends Controller
         $role = $role::find(2);
 
         $role->users()->save($user);
+
+        $notification = new Notification();
+        $notification->user_id = $user->id;
+        $notification->save();
 
         Auth::login($user);
         return redirect()->route('login.index');

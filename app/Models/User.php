@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Conversation', 'conversations_users');
     }
+
+    public function notification()
+    {
+        return $this->hasOne('App\Models\Notification');
+    }
+
+    public function can_receive_message_notification()
+    {
+        return $this->notification->message_notification;
+    }
 }

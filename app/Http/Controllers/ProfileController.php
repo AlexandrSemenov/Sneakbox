@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class ProfileController extends Controller
         }
 
 
-        return redirect()->route('myprofile.index')->with('message', $message);
+        return redirect()->route('profile.settings')->with('message', $message);
 
     }
 
@@ -68,7 +69,7 @@ class ProfileController extends Controller
             $message2 = "Вы обновили пароль";
         }
 
-        return redirect()->route('myprofile.index')->with('message2', $message2);
+        return redirect()->route('profile.settings')->with('message2', $message2);
     }
 
     public function messagesAnswer()
@@ -87,8 +88,32 @@ class ProfileController extends Controller
         if(Auth::user())
         {
             $user = User::find(Auth::user()->id);
-            return view('myprofile.settings', ['user' => $user]);
+            $user_notifications = Notification::where('user_id', '=', Auth::user()->id)->first();
+            return view('myprofile.settings', ['user' => $user, 'notifications' => $user_notifications]);
         }
         return view('login.index');
+    }
+
+    public function notifyUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'message_notification' => 'required|boolean',
+            'information_notification' => 'required|boolean',
+            'news_notification' => 'required|boolean',
+        ], [
+            'message_notification.boolean' => 'Неправильный тип значения (bool)',
+            'information_notification.boolean' => 'Неправильный тип значения (bool)',
+            'news_notification.boolean' => 'Неправильный тип значения (bool)',
+        ]);
+
+        $user_notifications = Notification::where('user_id', '=', Auth::user()->id)->first();
+
+        $user_notifications->message_notification = $request['message_notification'];
+        $user_notifications->information_notification = $request['information_notification'];
+        $user_notifications->news_notification = $request['news_notification'];
+        $user_notifications->update();
+
+        return redirect()->route('profile.settings');
+
     }
 }

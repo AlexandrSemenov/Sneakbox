@@ -20,17 +20,17 @@ class Message extends Model
     public function accessMessages($id)
     {
         $conversation = Conversation::find($id);
-        if(Auth::user()->id == $conversation->receive || Auth::user()->id == $conversation->send)
-        {
-            return true;
-        }else{
-           return false;
+        if($conversation){
+            if (Auth::user()->id == $conversation->receive || Auth::user()->id == $conversation->send) {
+                return true;
+            }
         }
-
+        return false;
     }
+
     public function countUnreadMessages($id)
     {
-        $messages = Message::select('id')->where('conversation_id', '=', $id)->where('receive','=', Auth::user()->id)->where('read','=',0)->get();
+        $messages = Message::select('id')->where('conversation_id', '=', $id)->where('receive', '=', Auth::user()->id)->where('read', '=', 0)->get();
         return count($messages);
     }
 }
