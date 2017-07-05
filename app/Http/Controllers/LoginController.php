@@ -6,8 +6,9 @@ use App\Models\Notification;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
@@ -42,6 +43,7 @@ class LoginController extends Controller
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
+        $user->reset_token = hash_hmac('sha256', str_random(40), config('app.key'));
         $user->save();
 
         $role = new Role();
@@ -97,5 +99,57 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect()->route('login.index');
+    }
+
+    public function passwordReset(Request $request)
+    {
+
+        if($request->isMethod('post')){
+            $this->validate($request, [
+                'email' => 'required|email|exists:users',
+            ], [
+                'email.required' => 'Необходимо указать email',
+                'email.exists' => 'Этого email нет в базе',
+            ]);
+
+            $user = User::where('email', '=', $request['email'])->first();
+            $url = Config::get('app.url');
+
+            Mail::send('email.reset', array('user' => $user, 'url' => $url), function($message) use ($user){
+                $message->from('info.sneakbox@gmail.com', 'Sneak.Box info');
+                $message->to($user->email, $user->name)->subject('Запрос на изменения пароля на сайте Sneakbox.com.ua');
+            });
+
+            return redirect()->back()->with('notification', "Мы выслали вам инструкцию на почту");
+        }
+
+        return view('reset.index');
+    }
+
+    public function passwordResetForm(Request $request)
+    {
+        if($request->isMethod('post')){
+
+            $token = $request->token;
+            $user = User::where('reset_token', '=', $token)->first();
+            if($user){
+                $this->validate($request, [
+                    'new_pass_1' => 'required',
+                    'new_pass_2' => 'required|same:new_pass_1'
+                ],[
+                    'new_pass_1.required' => 'Необходимо указать пароль',
+                    'new_pass_2.required' => 'Необходимо указать пароль',
+                    'new_pass_2.same' => 'Введенные пароли не совпадают'
+                ]);
+
+                $user->password = Hash::make($request['new_pass_1']);
+                $user->reset_token = hash_hmac('sha256', str_random(40), config('app.key'));
+                $user->update();
+
+                return redirect()->route('login.index');
+            }
+            return view('errors.reset-token');
+        }
+        return view('reset.password');
     }
 }

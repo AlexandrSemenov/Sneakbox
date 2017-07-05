@@ -23,13 +23,16 @@ Route::post('/login', ['uses' => 'LoginController@login', 'as' => 'login']);
 Route::post('login/admin', ['uses' => 'LoginController@loginAdmin', 'as' => 'login.admin']);
 
 Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'logout']);
+Route::get('/password-reset', ['uses' => 'LoginController@passwordReset']);
+Route::post('/password-reset', ['uses' => 'LoginController@passwordReset', 'as' => 'password.reset']);
+Route::get('/password-reset-form', ['uses' => 'LoginController@passwordResetForm']);
+Route::post('/password-reset-form', ['uses' => 'LoginController@passwordResetForm', 'as' => 'password.reset.form']);
 
 /**
  * Регистрация
  */
 Route::get('/register', ['uses' => 'LoginController@register', 'as' => 'login.register']);
 Route::post('/register', ['uses' => 'LoginController@registerUser', 'as' => 'login.register.user']);
-
 
 /**
  * Админ панель
@@ -45,10 +48,7 @@ Route::post('/profile/userupdate', ['uses' => 'ProfileController@userUpdate', 'a
 Route::post('/profile/passupdate', ['uses' => 'ProfileController@passUpdate', 'as' => 'pass.update']);
 Route::post('/profile/notifyupdate', ['uses' => 'ProfileController@notifyUpdate', 'as' => 'notify.update']);
 
-
-
 Route::get('/profile/settings', ['uses' => 'ProfileController@profileSettings', 'as' => 'profile.settings', 'middleware' => 'auth']);
-
 
 /**
  * Объявления

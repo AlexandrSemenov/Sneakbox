@@ -25,6 +25,7 @@
                     <input type="hidden" name="_token" value="{{Session::token()}}">
                     <input class="btn btn-primary btn-block" type="submit" value="войти">
                 </form>
+                <div style="margin-top: 20px;"><a href="{{ route('password.reset') }}">Забыли пароль?</a></div>
             </div>
         </div>
     @endsection
