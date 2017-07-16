@@ -17,7 +17,6 @@
                 </div>
             </div>
             <div class="col-md-7 info-block">
-                <div class="price">
                     <h4>Цена: {{$product->price}} грн.</h4>
                     <h4>Размер: {{$product->size->name}}</h4>
                     <h4>Категория: {{$product->category->name}}</h4>
@@ -25,8 +24,10 @@
                     <h4>Автор объявления: {{($product->user->full_name)?$product->user->full_name: $product->user->name}}</h4>
                     <h4>Дата создания: {{Carbon\Carbon::parse( $product->created_at)->format('d-m-Y')}}</h4>
                     <h4>Описание:</h4>
-                    <p>{{$product->description}}</p>
-                </div>
+                    <div class="decr">
+                        <p>{{$product->description}}</p>
+                    </div>
+
                 <div class="message-block">
 
                     <h4>Свяжитесь с автором объявления: </h4>
