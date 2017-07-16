@@ -1,13 +1,15 @@
 <?php
+
 namespace App\Components;
+
 use App\Models\Gallery;
+use Illuminate\Http\UploadedFile;
 
 class UploadImage
 {
     public function uploadImage($image)
     {
-        if($image)
-        {
+        if ($image) {
             //текущая дата
             $current_year = date("Y");
             $current_month = date("m");
@@ -24,20 +26,20 @@ class UploadImage
             //Доступные расширения файлов
             $allowed = array('jpg', 'png', 'jpeg');
 
-            if(in_array($image_ext, $allowed)){
+            if (in_array($image_ext, $allowed)) {
 
-                if($image_error === 0){
-                    if($image_size <= 2097152){
+                if ($image_error === 0) {
+                    if ($image_size <= 2097152) {
                         $image_name_new = uniqid('img-', false) . '.' . $image_ext;
                         $image_destination = "uploads/$current_year/$current_month/$current_day/";
                         $upload_dir = "uploads/$current_year/$current_month/$current_day/";
 
-                        if(!is_dir($upload_dir)){
+                        if (!is_dir($upload_dir)) {
                             $old = umask(0);
                             mkdir($upload_dir, 0777, true);
                             umask($old);
                         }
-                        if($file->move($image_destination, $image_name_new)){
+                        if ($file->move($image_destination, $image_name_new)) {
                             // ширина и высота нового изображения
                             $width = 200;
                             $height = 200;
@@ -46,56 +48,55 @@ class UploadImage
                             $image_location = $image_destination . $image_name_new;
                             list($width_orig, $height_orig) = getimagesize($image_location);
 
-                            $src_x = ($width_orig > $height_orig)? ($width_orig-$height_orig)/2 : 0;
+                            $src_x = ($width_orig > $height_orig) ? ($width_orig - $height_orig) / 2 : 0;
 
                             // прировнять высоту и ширину изображения
-                            if($width_orig < $height_orig){
+                            if ($width_orig < $height_orig) {
                                 $height_orig = $width_orig;
-                            }else{
+                            } else {
                                 $width_orig = $height_orig;
                             }
 
-                            $ratio_orig = $width_orig/$height_orig;
+                            $ratio_orig = $width_orig / $height_orig;
 
                             //ресайз изображения
-                            if ($width/$height > $ratio_orig) {
-                                $width = $height*$ratio_orig;
+                            if ($width / $height > $ratio_orig) {
+                                $width = $height * $ratio_orig;
                             } else {
-                                $height = $width/$ratio_orig;
+                                $height = $width / $ratio_orig;
                             }
 
-                            if($image_mime_type == "image/jpeg" || $image_mime_type == "image/pjpeg" ){
+                            if ($image_mime_type == "image/jpeg" || $image_mime_type == "image/pjpeg") {
                                 //получить id изображениея
                                 $image_old = imagecreatefromjpeg($image_location);
 
-                            }elseif($image_mime_type == "image/png"){
+                            } elseif ($image_mime_type == "image/png") {
                                 $image_old = imagecreatefrompng($image_location);
                             }
 
                             //создать новое изображение
-                            $image_new = imagecreatetruecolor($width,$height);
+                            $image_new = imagecreatetruecolor($width, $height);
 
                             //копировать и изменить размеры изображения
-                            imagecopyresampled($image_new,$image_old, 0, 0, $src_x, 0,$width,$height,$width_orig,$height_orig);
+                            imagecopyresampled($image_new, $image_old, 0, 0, $src_x, 0, $width, $height, $width_orig, $height_orig);
                             //сохранить новое изображение
                             imagejpeg($image_new, $image_location, 90);
 
                             return "/uploads/$current_year/$current_month/$current_day/" . $image_name_new;
-                        }else{
+                        } else {
                             dd('изображение не загруженно');
                         }
                     }
                 }
             }
-        }else{
+        } else {
             return "/uploads/default/default-placeholder-small.png";
         }
     }
 
     public function uploadGallery($gallery, $product_id)
     {
-        if($gallery[0] != NULL)
-        {
+        if ($this->checkGalleryUploads($gallery)) {
             //текущая дата
             $current_year = date("Y");
             $current_month = date("m");
@@ -104,33 +105,31 @@ class UploadImage
             $images = $gallery;
 
 
-            foreach($images as $image)
-            {
-                if($image != NULL)
-                {
+            foreach ($images as $image) {
+                if ($image != NULL) {
                     $image_ext = $image->getClientOriginalExtension();
 
                     $new_image_name = uniqid('img-', false) . '.' . $image_ext;
                     $image_destination = "uploads/$current_year/$current_month/$current_day/";
                     $upload_dir = "uploads/$current_year/$current_month/$current_day/";
 
-                    if(!is_dir($upload_dir)){
+                    if (!is_dir($upload_dir)) {
                         $old = umask(0);
                         mkdir($upload_dir, 0777, true);
                         umask($old);
                     }
-                    if($image->move($image_destination, $new_image_name)){
+                    if ($image->move($image_destination, $new_image_name)) {
                         $gallery = new Gallery;
-                        $gallery->image_path = '/'.$image_destination . $new_image_name;
+                        $gallery->image_path = '/' . $image_destination . $new_image_name;
                         $gallery->product_id = $product_id;
                         $gallery->save();
-                    }else{
+                    } else {
                         dd('что то пошло не так');
                     }
                 }
 
             }
-        }else{
+        } else {
             $gallery = new Gallery;
             $gallery->image_path = "/uploads/default/default-placeholder-big.png";
             $gallery->product_id = $product_id;
@@ -138,6 +137,16 @@ class UploadImage
         }
 
     }
+
+    public function checkGalleryUploads($gallery)
+    {
+        foreach ($gallery as $image) {
+            if (is_object($image)) {
+                return true;
+            }
+        }
+    }
+
     public function editGallery($image)
     {
         //текущая дата
@@ -146,14 +155,13 @@ class UploadImage
         $current_day = date("d");
 
 
-        if($image != NULL)
-        {
+        if ($image != NULL) {
             $image_ext = $image->getClientOriginalExtension();
             $new_image_name = uniqid('img-', false) . '.' . $image_ext;
             $image_destination = "uploads/$current_year/$current_month/$current_day/";
             $upload_dir = "uploads/$current_year/$current_month/$current_day/";
 
-            if(!is_dir($upload_dir)){
+            if (!is_dir($upload_dir)) {
                 $old = umask(0);
                 mkdir($upload_dir, 0777, true);
                 umask($old);
