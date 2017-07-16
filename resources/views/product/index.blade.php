@@ -4,39 +4,62 @@
 
     <div class="row main-page" style="margin-top: 30px;">
         <div class="col-md-3">
-            <h4>Сортировать</h4>
-
             <form action="{{route('product.index')}}" method="get">
                 <label for="">Категория: </label>
-                <select class="form-control" name="category" id="category">
+                <div class="checkbox">
                     @foreach($form->getCategoryList() as $category)
-                        @if(!empty($_GET['category']))
-                            <option value="{{$category->id}}" {{$category->id == $_GET['category']? "selected='selected'":""}}>{{$category->name}}</option>
-                        @else
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endif
+                        <div class="checkbox">
+                            <label>
+                                @if(!empty($_GET['category']))
+                                    <input type="checkbox" name="category[]" value="{{$category->id}}"
+                                    @foreach($_GET['category'] as $category_checked)
+                                        {{$category->id == $category_checked ? "checked=checked" : ""}}
+                                            @endforeach
+                                    >
+                                @else
+                                    <input type="checkbox" name="category[]" value="{{$category->id}}">
+                                @endif
+                                {{$category->name}}
+                            </label>
+                        </div>
                     @endforeach
-                </select>
+                </div>
                 <label for="">Размер:</label>
-                <select class="form-control" name="size" id="size">
+                <div class="checkbox">
                     @foreach($form->getSizeList() as $size)
-                        @if(!empty($_GET['size']))
-                            <option value="{{$size->id}}" {{$size->id == $_GET['size']? "selected='selected'":""}}>{{$size->name}}</option>
-                        @else
-                        <option value="{{$size->id}}">{{$size->name}}</option>
-                        @endif
+                        <label class="checkbox-inline">
+                            @if(!empty($_GET['size']))
+                                <input type="checkbox" name="size[]" value="{{$size->id}}"
+                                @foreach($_GET['size'] as $size_checked)
+                                    {{$size->id == $size_checked ? "checked=checked" : ""}}
+                                        @endforeach
+                                >
+                            @else
+                                <input type="checkbox" name="size[]" value="{{$size->id}}">
+                            @endif
+                            {{$size->name}}
+                        </label>
                     @endforeach
-                </select>
+                </div>
                 <label for="">Состояние:</label>
-                <select class="form-control" name="condition" id="condition">
+                <div class="checkbox">
                     @foreach($form->getConditionList() as $condition)
-                        @if(!empty($_GET['condition']))
-                            <option value="{{$condition->id}}" {{$condition->id == $_GET['condition']? "selected='selected'":""}}>{{$condition->name}}</option>
-                        @else
-                        <option value="{{$condition->id}}">{{$condition->name}}</option>
-                        @endif
+                        <div class="checkbox">
+                            <label>
+                                @if(!empty($_GET['condition']))
+                                    <input type="checkbox" name="condition[]" value="{{$condition->id}}"
+                                    @foreach($_GET['condition'] as $condition_checked)
+                                        {{$condition->id == $condition_checked ? "checked=checked" : ""}}
+                                            @endforeach
+                                    >
+                                @else
+                                    <input type="checkbox" name="condition[]" value="{{$condition->id}}">
+                                @endif
+                                {{$condition->name}}
+                            </label>
+                        </div>
                     @endforeach
-                </select>
+                </div>
                 <div class="form-group">
                     <label for="amount">Ценовой диапазон:</label>
                     <input type="text" id="amount" readonly style="border:0; color:#565a5c; font-weight:bold;">
@@ -52,7 +75,7 @@
         </div>
         <div class="col-md-9 result">
 
-                @if($products instanceof Illuminate\Pagination\LengthAwarePaginator)
+            @if($products instanceof Illuminate\Pagination\LengthAwarePaginator)
                 <div class="row">
                     @foreach($products as $product)
                         <div class="col-md-3" style="margin: 15px 0">
@@ -62,15 +85,14 @@
                         </div>
                     @endforeach
                 </div>
-                        {{ $products->appends($queryParams->getParams())->render() }}
-                @else
-                    <div class="row">
-                        <h4>{{$products}}</h4>
-                    </div>
-                @endif
-            </div>
-
+                {{ $products->appends($queryParams->getParams())->render() }}
+            @else
+                <div class="row">
+                    <h4>{{$products}}</h4>
+                </div>
+            @endif
         </div>
-    </div>
 
+    </div>
+    @include('tpl.range')
 @endsection

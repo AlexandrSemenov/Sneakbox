@@ -16,7 +16,7 @@
  * @return string
  */
 
-namespace App\Classes;
+namespace App\Components;
 
 
 class Slug

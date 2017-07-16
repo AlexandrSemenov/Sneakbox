@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Classes\CleanProductsService;
+use App\Components\CleanProductsService;
 
 class ProductsTracing extends Command
 {

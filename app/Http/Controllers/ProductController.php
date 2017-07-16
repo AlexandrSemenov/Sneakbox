@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Mail;
 use Auth;
-use App\Classes\UploadImage;
-use App\Classes\Slug;
+use App\Components\ProductRepository;
+use App\Components\UploadImage;
+use App\Components\Slug;
 use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\ProductCreateForm;
 use Illuminate\Http\Request;
-use App\Classes\QueryParams;
+use App\Components\QueryParams;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
-use App\Classes\CleanProductsService;
+use App\Components\CleanProductsService;
 
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductRepository $productRepository)
     {
         if(!empty($_GET))
         {
@@ -28,11 +29,13 @@ class ProductController extends Controller
             /**
              * если get массив пустой
              */
-            $products = Product::where('active','=',1)->orderBy('updated_at', 'desc')->paginate(12);
+            $products = Product::where('active','=',1)->orderBy('updated_at', 'desc')->paginate(16);
         }
         $queryParams = new QueryParams();
         $form = new ProductCreateForm();
-        return view('product.index', ['products'=>$products, 'form'=>$form, 'queryParams' => $queryParams]);
+        $range = $productRepository->getPriceRange();
+
+        return view('product.index', ['products'=>$products, 'form'=>$form, 'queryParams' => $queryParams, 'range' => $range]);
     }
 
     public function createProduct()

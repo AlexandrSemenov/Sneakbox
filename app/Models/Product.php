@@ -37,21 +37,21 @@ class Product extends Model
         $query = Product::where('active', 1);
         if(!empty($_GET['category']))
         {
-            $query->where('category_id','=',$_GET['category']);
+            $query->whereIn('category_id', $_GET['category']);
         }
         if(!empty($_GET['size']))
         {
-            $query->where('size_id','=',$_GET['size']);
+            $query->whereIn('size_id', $_GET['size']);
         }
         if(!empty($_GET['condition']))
         {
-            $query->where('condition_id','=',$_GET['condition']);
+            $query->whereIn('condition_id', $_GET['condition']);
         }
         if(!empty($_GET['price_from']) || !empty($_GET['price_till']))
         {
             $query->whereBetween('price', array($_GET['price_from'], $_GET['price_till']));
         }
 
-        return count($query->get()) > 0 ? $query->orderBy('updated_at', 'desc')->paginate(12) : "Совпадений не найдено";
+        return count($query->get()) > 0 ? $query->orderBy('updated_at', 'desc')->paginate(16) : "Совпадений не найдено";
     }
 }

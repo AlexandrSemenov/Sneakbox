@@ -63,30 +63,6 @@ jQuery(document).ready(function(){
 
     /*----- END Редактируем галерею -----*/
 
-    /*----- слайдер с ценами на главной странице -----*/
-    function $_GET(key) {
-        var val = window.location.search;
-        val = val.match(new RegExp(key + '=([^&=]+)'));
-        return val ? val[1] : false;
-    }
-
-    $( function() {
-        $( "#slider-range" ).slider({
-            min: 0,
-            max: 10000,
-            range: true,
-            values: [$_GET('price_from')? $_GET('price_from'):"0", $_GET('price_till')? $_GET('price_till'):"2500"],
-            slide: function( event, ui ) {
-                $("#amount").val(ui.values[0] + " - " + ui.values[1]);
-                $("#price_from").val(ui.values[0]);
-                $("#price_till").val(ui.values[1]);
-            }
-        });
-        $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
-        $("#price_from").val($_GET('price_from')? $_GET('price_from'):"0");
-        $("#price_till").val($_GET('price_till')? $_GET('price_till'):"2500");
-    } );
-    /*----- end слайдер с ценами -----*/
 });
 
 /*----- Подгружаем заглавное фото -----*/

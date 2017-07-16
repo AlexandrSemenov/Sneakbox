@@ -1,5 +1,5 @@
 <?php
-namespace App\Classes;
+namespace App\Components;
 use App\Models\Gallery;
 
 class UploadImage
