@@ -27,7 +27,7 @@
                     <label for="category">Категория</label>
                     <select class="form-control" name="category_id" id="category">
                         @foreach($form->getCategoryList() as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}" {{ !empty(old('category_id')) && ($category->id == old('category_id')) ? ' selected="selected"' : '' }}>{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -35,7 +35,7 @@
                     <label for="size">Размер</label>
                     <select class="form-control" name="size" id="size">
                         @foreach($form->getSizeList() as $size)
-                            <option value="{{$size->id}}">{{$size->name}}</option>
+                            <option value="{{$size->id}}" {{ !empty(old('size')) && ($size->id == old('size')) ? ' selected="selected"' : '' }}>{{$size->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -43,7 +43,7 @@
                     <label for="condition">Состояние</label>
                     <select class="form-control" name="condition" id="condition">
                         @foreach($form->getConditionList() as $condition)
-                            <option value="{{$condition->id}}">{{$condition->name}}</option>
+                            <option value="{{$condition->id}}" {{ !empty(old('condition')) && ($condition->id == old('condition')) ? ' selected="selected"' : '' }}>{{$condition->name}}</option>
                         @endforeach
                     </select>
                 </div>
