@@ -65,11 +65,6 @@
                     @endif
                 </div>
 
-                {{--<div class="form-group">--}}
-                    {{--<lable id="gallery">Добавить фото для галереи</lable>--}}
-                    {{--<input type="file" id="gallery" name="gallery[]" multiple>--}}
-                {{--</div>--}}
-
                 <div class="gallery-input-block">
                     <label>Добавить фото для галереи (не более 8 фото)</label>
                     <!-- Gallery image 1 -->
@@ -225,7 +220,6 @@
                     <!-- END Gallery image 8 -->
 
                 </div>
-                {{--<div class="btn btn-primary more-gallery-input">Добавить фото</div>--}}
 
                 <div class="checkbox">
                     <label>

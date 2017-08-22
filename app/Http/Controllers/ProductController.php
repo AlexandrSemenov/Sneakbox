@@ -13,7 +13,6 @@ use App\Models\ProductCreateForm;
 use Illuminate\Http\Request;
 use App\Components\QueryParams;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests;
 use App\Components\CleanProductsService;
 
 
@@ -90,6 +89,7 @@ class ProductController extends Controller
             $product->active = $request['checked']?'1':'0';
 
             $product->save();
+
             $uploadimage->uploadGallery($request['gallery'], $product->id);
 
             return redirect()->route('myprofile.index');
@@ -107,6 +107,7 @@ class ProductController extends Controller
                 if(Auth::user()->id == $product->user_id)
                 {
                     $images = Gallery::where('product_id', $product->id)->get();
+                    $images = $images->toArray();
 
                     return view('product.edit', ['product' => $product, 'images' => $images]);
                 }
@@ -142,6 +143,7 @@ class ProductController extends Controller
             $product->category_id = $request['category_id'];
             $product->condition_id = $request['condition'];
             $product->size_id = $request['size'];
+
             if(!empty($request['image']))
             {
                 if($product->image != '/uploads/default/default-placeholder-small.png'){
@@ -158,14 +160,14 @@ class ProductController extends Controller
             $images = $request->gallery;
             $oldimages = $request->oldgallery;
 
-            /* удаляем старые изображения */
+            /* удаляем старые изображения (галерея) */
             if(!empty($oldimages))
             {
                 foreach ($oldimages as $oldimage)
                 {
                     if(!empty($oldimage))
                     {
-                        if($oldimage != '/uploads/default/default-placeholder-big.png'){
+                        if($oldimage != '/uploads/default/default-placeholder-big.png' && $oldimage != '/uploads/default/default-placeholder-small.png'){
                             unlink(realpath('.'.$oldimage));
                         }
                     }

@@ -3,10 +3,14 @@
 namespace App\Components;
 
 use App\Models\Gallery;
-use Illuminate\Http\UploadedFile;
 
 class UploadImage
 {
+    /**
+     * Возвращает путь к главному изображению
+     * @param $image
+     * @return string
+     */
     public function uploadImage($image)
     {
         if ($image) {
@@ -94,6 +98,11 @@ class UploadImage
         }
     }
 
+    /**
+     * Возвращает пути к изображениям в галереи
+     * @param $gallery
+     * @param $product_id
+     */
     public function uploadGallery($gallery, $product_id)
     {
         if ($this->checkGalleryUploads($gallery)) {
@@ -103,7 +112,6 @@ class UploadImage
             $current_day = date("d");
 
             $images = $gallery;
-
 
             foreach ($images as $image) {
                 if ($image != NULL) {
@@ -126,6 +134,11 @@ class UploadImage
                     } else {
                         dd('что то пошло не так');
                     }
+                }else{
+                    $gallery = new Gallery;
+                    $gallery->image_path = '/uploads/default/default-placeholder-small.png';
+                    $gallery->product_id = $product_id;
+                    $gallery->save();
                 }
 
             }
@@ -134,6 +147,13 @@ class UploadImage
             $gallery->image_path = "/uploads/default/default-placeholder-big.png";
             $gallery->product_id = $product_id;
             $gallery->save();
+
+            for ($i = 1; $i <= 7; $i++) {
+                $gallery = new Gallery;
+                $gallery->image_path = '/uploads/default/default-placeholder-small.png';
+                $gallery->product_id = $product_id;
+                $gallery->save();
+            }
         }
 
     }

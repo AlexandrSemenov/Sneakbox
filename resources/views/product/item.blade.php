@@ -12,7 +12,10 @@
             <div class="col-md-5 slider-block">
                 <div class="slider-items">
                     @foreach($galleries as $gallery)
-                        <img class="img-responsive" src="{{$gallery->image_path}}" alt="image">
+                        <?php $image = $gallery->image_path ?>
+                        @if($image != '/uploads/default/default-placeholder-small.png')
+                            <img class="img-responsive" src="{{$image}}" alt="image">
+                        @endif
                     @endforeach
                 </div>
             </div>
