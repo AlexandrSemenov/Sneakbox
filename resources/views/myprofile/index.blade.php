@@ -28,7 +28,7 @@
                                         <li>Дата создания: {{Carbon\Carbon::parse( $product->created_at)->format('d-m-Y')}}</li>
                                         <li><a href="{{route('product.edit', ['alias' => $product->alias])}}">Редактировать</a></li>
                                         <li><a href="{{route('product.item', ['alias' => $product->alias])}}">Просмотреть</a></li>
-                                        <li><a href="">Удалить</a></li>
+                                        <li><a href="{{route('product.delete', ['alias' => $product->alias])}}">Удалить</a></li>
                                     </ul>
                                 </div>
                             </div>

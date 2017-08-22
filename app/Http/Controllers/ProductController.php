@@ -230,6 +230,18 @@ class ProductController extends Controller
         return view('notification.deleted-product');
     }
 
+    public function deleteProduct($alias)
+    {
+        $product =  Product::where('alias', '=', $alias)->first();
+        $product->delete();
+
+        return redirect()->back();
+    }
+
+    /**
+     * TODO delete method
+     * @param CleanProductsService $cleanProducts
+     */
     public function test(CleanProductsService $cleanProducts)
     {
         $currentDate = new \DateTime();
