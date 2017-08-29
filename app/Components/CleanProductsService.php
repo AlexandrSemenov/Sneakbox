@@ -118,7 +118,7 @@ class CleanProductsService
     {
         $images = $this->getGalleryImages($product);
         foreach($images as $image){
-            if($image->image_path != '/uploads/default/default-placeholder-big.png'){
+            if($image->image_path != '/uploads/default/default-placeholder-big.png' && $image->image_path != '/uploads/default/default-placeholder-small.png'){
                 unlink('public' . $image->image_path);
             }
         }
