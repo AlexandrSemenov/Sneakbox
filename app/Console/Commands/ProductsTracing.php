@@ -24,7 +24,7 @@ class ProductsTracing extends Command
 
     public function handle(CleanProductsService $cleanProducts)
     {
-//        $cleanProducts->sendEmailNotification();
+        $cleanProducts->sendEmailNotification();
         $cleanProducts->deleteOldProducts();
         $this->info('Products:Tracing Command Run successfully!');
     }
