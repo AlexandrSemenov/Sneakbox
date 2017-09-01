@@ -28,22 +28,16 @@ class CleanProductsService
 
     public function getNotificationDate()
     {
-        /**
-         * TODO поменять агрумент modify на '-20 day' после теста
-         */
         $currentDate = new \DateTime();
-        $currentDate->modify('-1 day');
+        $currentDate->modify('-30 day');
         $date = $currentDate->format('Y-m-d');
         return $date;
     }
 
     public function getDeleteEmailDate()
     {
-        /**
-         * TODO поменять агрумент modify на '-30 day' после теста
-         */
         $currentDate = new \DateTime();
-        $currentDate->modify('-2 day');
+        $currentDate->modify('-40 day');
         $date = $currentDate->format('Y-m-d');
         return $date;
     }
