@@ -1,4 +1,7 @@
 @extends('layout.layout')
+@section('title', 'Sneakbox - маркетплейс кроссовок')
+@section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
+
 @section('content')
     <div class="row">
         <div class="col-md-offset-4 col-md-4" style="margin-top: 100px">

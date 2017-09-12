@@ -1,9 +1,12 @@
 @extends('layout.layout')
-    @section('content')
-        <div class="notification-block alert alert-success">
-            <div class="message">
-                <p>Ваше объявление успешно обновлено</p>
-                <a href="/">Вернуться на главную страницу</a>
-            </div>
+@section('title', 'Sneakbox - маркетплейс кроссовок')
+@section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
+
+@section('content')
+    <div class="notification-block alert alert-success">
+        <div class="message">
+            <p>Ваше объявление успешно обновлено</p>
+            <a href="/">Вернуться на главную страницу</a>
         </div>
-    @endsection
+    </div>
+@endsection

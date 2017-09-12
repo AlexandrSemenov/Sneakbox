@@ -1,5 +1,7 @@
 @extends('layout.layout')
 @section('content')
+@section('title', "{$product->title} | Sneakbox - маркетплейс кроссовок")
+@section('description', "Категория: {$product->category->name} | " . str_replace(array("\r\n", "\r"), "", str_limit($product->description, $limit = 130, $end = '...')))
 
     <div class="product-page">
         <div class="row">

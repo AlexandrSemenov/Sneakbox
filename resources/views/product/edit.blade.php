@@ -1,5 +1,8 @@
 @extends('layout.layout')
 @section('content')
+@section('title', 'Sneakbox - маркетплейс кроссовок')
+@section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
+
     <div class="row edit-page" style="padding-bottom: 50px;">
         <div class="col-md-offset-4 col-md-4">
             <h4 style="margin-top: 30px; text-align: center">Редактировать объявление</h4>

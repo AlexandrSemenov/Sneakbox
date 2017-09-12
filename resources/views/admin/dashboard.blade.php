@@ -1,4 +1,7 @@
 @extends('layout.layout')
-    @section('content')
-        Dashboard page
-    @endsection
+@section('title', 'Sneakbox - маркетплейс кроссовок')
+@section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
+
+@section('content')
+    Dashboard page
+@endsection

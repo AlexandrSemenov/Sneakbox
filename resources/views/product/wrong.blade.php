@@ -1,4 +1,7 @@
 @extends('layout.layout')
+@section('title', 'Sneakbox - маркетплейс кроссовок')
+@section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
+
 @section('content')
     <div class="col-md-offset-3 col-md-5"  style="text-align: center;">
         <h4 style="margin-top: 200px; text-align: center; margin-bottom: 50px;">Вы не можете отредактировать это объявления так как не являетесь его автором</h4>
