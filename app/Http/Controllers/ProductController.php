@@ -20,28 +20,27 @@ class ProductController extends Controller
 {
     public function index(ProductRepository $productRepository)
     {
-        if(!empty($_GET))
-        {
+        if (!empty($_GET)) {
             $filterProduct = new Product();
             $products = $filterProduct->productFilter();
-        }else{
+        } else {
             /**
              * если get массив пустой
              */
-            $products = Product::where('active','=',1)->orderBy('updated_at', 'desc')->paginate(16);
+            $products = Product::where('active', '=', 1)->orderBy('updated_at', 'desc')->paginate(16);
         }
         $queryParams = new QueryParams();
         $form = new ProductCreateForm();
         $range = $productRepository->getPriceRange();
 
-        return view('product.index', ['products'=>$products, 'form'=>$form, 'queryParams' => $queryParams, 'range' => $range]);
+        return view('product.index', ['products' => $products, 'form' => $form, 'queryParams' => $queryParams, 'range' => $range]);
     }
 
     public function createProduct()
     {
         $form = new ProductCreateForm();
 
-        return view("product.create", ['form'=>$form]);
+        return view("product.create", ['form' => $form]);
     }
 
     public function saveProduct(Request $request, UploadImage $uploadimage, Slug $slug)
@@ -64,9 +63,8 @@ class ProductController extends Controller
             'gallery.max' => 'Изображение не может быть больше 1.5 мегабайт.'
         ];
 
-        $count = count($request['gallery'])-1;
-        foreach(range(0, $count) as $index)
-        {
+        $count = count($request['gallery']) - 1;
+        foreach (range(0, $count) as $index) {
             $rules['gallery.' . $index] = 'mimes:jpeg,png|max:1500';
             $messages['gallery.' . $index . '.mimes'] = 'Тип изображение должен быть jpeg или png';
             $messages['gallery.' . $index . '.max'] = 'Изображение не может быть больше 1.5 мегабайт';
@@ -74,11 +72,10 @@ class ProductController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        if(Auth::user())
-        {
+        if (Auth::user()) {
             $product = new Product();
             $product->title = $request['title'];
-            $product->alias = uniqid($slug->makeSlug($request['title']).'-',false);
+            $product->alias = uniqid($slug->makeSlug($request['title']) . '-', false);
             $product->price = $request['price'];
             $product->description = $request['description'];
             $product->category_id = $request['category_id'];
@@ -86,7 +83,7 @@ class ProductController extends Controller
             $product->size_id = $request['size'];
             $product->image = $uploadimage->uploadImage($request['image']);
             $product->user_id = Auth::user()->id;
-            $product->active = $request['checked']?'1':'0';
+            $product->active = $request['checked'] ? '1' : '0';
 
             $product->save();
 
@@ -100,12 +97,9 @@ class ProductController extends Controller
     public function editProduct($alias)
     {
         $product = Product::where('alias', $alias)->first();
-        if($product->first() != NULL)
-        {
-            if(Auth::user())
-            {
-                if(Auth::user()->id == $product->user_id)
-                {
+        if ($product->first() != NULL) {
+            if (Auth::user()) {
+                if (Auth::user()->id == $product->user_id) {
                     $images = Gallery::where('product_id', $product->id)->get();
                     $images = $images->toArray();
 
@@ -134,8 +128,7 @@ class ProductController extends Controller
             'description.required' => 'Добавьте описание для товара'
         ]);
 
-        if(Auth::user())
-        {
+        if (Auth::user()) {
             $product = Product::where('alias', $alias)->first();
             $product->title = $request['title'];
             $product->price = $request['price'];
@@ -144,16 +137,15 @@ class ProductController extends Controller
             $product->condition_id = $request['condition'];
             $product->size_id = $request['size'];
 
-            if(!empty($request['image']))
-            {
-                if($product->image != '/uploads/default/default-placeholder-small.png'){
-                    unlink(realpath('.'.$product->image));
+            if (!empty($request['image'])) {
+                if ($product->image != '/uploads/default/default-placeholder-small.png') {
+                    unlink(realpath('.' . $product->image));
                 }
 
                 $product->image = $uploadimage->uploadImage($request['image']);
             }
             $product->user_id = Auth::user()->id;
-            $product->active = $request['checked']?'1':'0';
+            $product->active = $request['checked'] ? '1' : '0';
             $product->timestamps = false;
             $product->update();
 
@@ -161,14 +153,11 @@ class ProductController extends Controller
             $oldimages = $request->oldgallery;
 
             /* удаляем старые изображения (галерея) */
-            if(!empty($oldimages))
-            {
-                foreach ($oldimages as $oldimage)
-                {
-                    if(!empty($oldimage))
-                    {
-                        if($oldimage != '/uploads/default/default-placeholder-big.png' && $oldimage != '/uploads/default/default-placeholder-small.png'){
-                            unlink(realpath('.'.$oldimage));
+            if (!empty($oldimages)) {
+                foreach ($oldimages as $oldimage) {
+                    if (!empty($oldimage)) {
+                        if ($oldimage != '/uploads/default/default-placeholder-big.png' && $oldimage != '/uploads/default/default-placeholder-small.png') {
+                            unlink(realpath('.' . $oldimage));
                         }
                     }
 
@@ -178,12 +167,10 @@ class ProductController extends Controller
             /* перезаписываем путь к изображению */
             $gallery = Gallery::where('product_id', $product->id)->get();
 
-            foreach($gallery as $key => $image)
-            {
-                if(!empty($images[$key]))
-                {
-                   $image->image_path = $uploadimage->editGallery($images[$key]);
-                   $image->update();
+            foreach ($gallery as $key => $image) {
+                if (!empty($images[$key])) {
+                    $image->image_path = $uploadimage->editGallery($images[$key]);
+                    $image->update();
                 }
 
             }
@@ -194,9 +181,8 @@ class ProductController extends Controller
 
     public function showProduct($alias)
     {
-        if(count(Product::select('id')->where('alias','=',$alias)->get())>0)
-        {
-            $product = Product::where('alias','=',$alias)->with('size')->with('category')->with('condition')->with('user')->first();
+        if (count(Product::select('id')->where('alias', '=', $alias)->get()) > 0) {
+            $product = Product::where('alias', '=', $alias)->with('size')->with('category')->with('condition')->with('user')->first();
             $galleries = Gallery::select('image_path')->where('product_id', $product->id)->get();
             return view('product.item', ['product' => $product, 'galleries' => $galleries]);
         }
@@ -212,8 +198,8 @@ class ProductController extends Controller
 
         $product = Product::where('alias', '=', $alias)->first();
 
-        if($product){
-            if($token == $product->token){
+        if ($product) {
+            if ($token == $product->token) {
                 /**
                  * генерируем новый токен
                  */
@@ -232,20 +218,13 @@ class ProductController extends Controller
 
     public function deleteProduct($alias)
     {
-        $product =  Product::where('alias', '=', $alias)->first();
-        $product->delete();
+        $product = Product::where('alias', '=', $alias)->first();
 
-        return redirect()->back();
-    }
-
-    /**
-     * TODO delete method
-     * @param CleanProductsService $cleanProducts
-     */
-    public function test(CleanProductsService $cleanProducts)
-    {
-        $currentDate = new \DateTime();
-        $currentDate->modify('-30 day');
-        $date = $currentDate->format('Y-m-d');
+        if (Auth::user()->roles()->first()->name == 'Admin' || $product->user_id == Auth::user()->id) {
+            $product->delete();
+            return redirect()->back();
+        } else {
+            return view('product.wrong');
+        }
     }
 }
