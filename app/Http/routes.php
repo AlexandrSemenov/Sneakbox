@@ -59,7 +59,7 @@ Route::post('/product/save', ['uses' => 'ProductController@saveProduct', 'as' =>
 Route::get('/product/edit/{alias}', ['uses' => 'ProductController@editProduct', 'as' => 'product.edit', 'middleware' => 'auth']);
 Route::post('/product/update/{alias}', ['uses' => 'ProductController@updateProduct', 'as' => 'product.update']);
 Route::get('product/updated/{alias}', ['uses' => 'ProductController@updateProductDate']);
-Route::get('product/delete/{alias}', ['uses' => 'ProductController@deleteProduct', 'as' => 'product.delete']);
+Route::get('product/delete/{alias}', ['uses' => 'ProductController@deleteProduct', 'as' => 'product.delete', 'middleware' => 'auth']);
 
 Route::get('/product/{alias}', ['uses' => 'ProductController@showProduct', 'as' => 'product.item']);
 
