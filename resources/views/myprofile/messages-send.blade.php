@@ -38,7 +38,7 @@
                                         <ul>
                                             <li>Дата создания: {{Carbon\Carbon::parse($conversation->created_at)->format('d-m-Y')}}</li>
                                             <li><a href="{{route('message.show', ['id' => $conversation->id])}}">Просмотреть</a></li>
-                                            <li><a href="">Удалить</a></li>
+                                            <li><a href="{{route('message.delete', ['id' => $conversation->id])}}">Удалить</a></li>
                                         </ul>
                                     </div>
                                 </div>

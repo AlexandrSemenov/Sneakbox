@@ -71,6 +71,7 @@ Route::post('/messages/save', ['uses' => 'MessageController@saveMessage', 'as' =
 Route::get('/profile/messages', ['uses' => 'MessageController@messagesReceived', 'as' => 'messages.received', 'middleware' => 'auth']);
 Route::get('/profile/messages/send', ['uses' => 'MessageController@messagesSend', 'as' => 'messages.send', 'middleware' => 'auth']);
 Route::get('/messages/show/{id}', ['uses' => 'MessageController@showMessage', 'as' => 'message.show', 'middleware' => ['auth', 'message']]);
+Route::get('/messages/delete/{id}', ['uses' => 'MessageController@deleteMessages', 'as' => 'message.delete', 'middleware' => ['auth', 'message']]);
 Route::post('/message/answer', ['uses' => 'MessageController@answerMessage', 'as' => 'message.answer']);
 
 /**

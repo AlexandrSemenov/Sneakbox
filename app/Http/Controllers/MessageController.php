@@ -157,4 +157,11 @@ class MessageController extends Controller
 
         return redirect()->back()->with(['message' => 'Сообщение отправленно']);
     }
+
+    public function deleteMessages($id)
+    {
+        $conversation = Conversation::where('id', '=', $id)->get()->first();
+        if ($conversation->delete())
+            return redirect()->back();
+    }
 }
