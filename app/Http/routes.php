@@ -54,6 +54,7 @@ Route::get('/profile/settings', ['uses' => 'ProfileController@profileSettings', 
  * Объявления
  */
 Route::get('/', ['uses' => 'ProductController@index', 'as' => 'product.index']);
+Route::get('/catalog', ['uses' => 'ProductController@index', 'as' => 'product.index']);
 Route::get('/product/create', ['uses' => 'ProductController@createProduct', 'as' => 'product.create', 'middleware' => 'auth']);
 Route::post('/product/save', ['uses' => 'ProductController@saveProduct', 'as' => 'product.save', 'middleware' => 'auth']);
 Route::get('/product/edit/{alias}', ['uses' => 'ProductController@editProduct', 'as' => 'product.edit', 'middleware' => 'auth']);

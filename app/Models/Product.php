@@ -51,6 +51,10 @@ class Product extends Model
         {
             $query->whereBetween('price', array($_GET['price_from'], $_GET['price_till']));
         }
+        if (!empty($_GET['search']))
+        {
+            $query->where('title', 'LIKE', '%'.$_GET['search'].'%');
+        }
 
         return count($query->get()) > 0 ? $query->orderBy('updated_at', 'desc')->paginate(16) : "Совпадений не найдено";
     }

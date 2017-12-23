@@ -24,6 +24,11 @@ class QueryParams
             $queryParams['price_from'] = $_GET['price_from'];
             $queryParams['price_till'] = $_GET['price_till'];
         }
+
+        if (!empty($_GET['search']))
+        {
+            $queryParams['search'] = $_GET['search'];
+        }
         return $queryParams;
     }
 }
