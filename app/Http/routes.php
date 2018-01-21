@@ -13,7 +13,10 @@ use App\Models\Role;
 |
 */
 
-
+/**
+ * Главная
+ */
+Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
 
 /**
  * Логинг
@@ -53,7 +56,6 @@ Route::get('/profile/settings', ['uses' => 'ProfileController@profileSettings', 
 /**
  * Объявления
  */
-Route::get('/', ['uses' => 'ProductController@index', 'as' => 'product.index']);
 Route::get('/catalog', ['uses' => 'ProductController@index', 'as' => 'product.index']);
 Route::get('/product/create', ['uses' => 'ProductController@createProduct', 'as' => 'product.create', 'middleware' => 'auth']);
 Route::post('/product/save', ['uses' => 'ProductController@saveProduct', 'as' => 'product.save', 'middleware' => 'auth']);
