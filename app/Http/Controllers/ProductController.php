@@ -13,7 +13,6 @@ use App\Models\ProductCreateForm;
 use Illuminate\Http\Request;
 use App\Components\QueryParams;
 use Illuminate\Support\Facades\Input;
-use App\Components\CleanProductsService;
 
 
 class ProductController extends Controller

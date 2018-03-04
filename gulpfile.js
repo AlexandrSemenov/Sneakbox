@@ -13,13 +13,14 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass([
+        'common.scss',
         'app.scss',
-        'header.scss',
+        'main.scss',
         'profile.scss',
         'edit.scss',
         'create.scss',
         'product.scss',
-        'main.scss',
+        'catalog.scss',
         'message-show.scss',
         'notification.scss',
     ], 'public/assets/css/style.css');

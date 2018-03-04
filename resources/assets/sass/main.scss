@@ -1,31 +1,153 @@
-.main-page{
-    color: #565a5c;
-    h4{
-        font-size: 17px;
-    }
-    form{
-        select{
-            margin: 10px 0;
+$white: #fff;
+$black: #000;
+
+.main{
+    .header-wrapp{
+        width: 100%;
+        height: 500px;
+        background-image: url("/assets/img/main-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        .header{
+            .logo{
+                a{
+                    display: block;
+                    width: 122px;
+                    height: 44px;
+                    background-image: url("/assets/img/logo-white.png");
+                }
+            }
+            .menu{
+                ul{
+                    li{
+                        &:after{
+                            color: $white;
+                        }
+                        a{
+                            color: $white;
+                        }
+                    }
+                }
+            }
+            .search-registr{
+                input{
+                    border-bottom: 1px solid $white;
+                    color: $white;
+                }
+                ul{
+                    li{
+                        a{
+                            color: $white;
+                        }
+                    }
+                }
+                .glyphicon-search{
+                    color: $white;
+                }
+                .add-adv{
+                    border: 1px solid $white;
+                }
+            }
+        }
+        .stripe{
+            width: 95%;
+            height: 28px;
+            background: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
         }
     }
-    .ui-slider{
-        margin-left: 8px;
-    }
-    .result{
+    .title{
+        font: 18px FuturaPTMedium;
+        color: black;
+        text-transform: uppercase;
         text-align: center;
-        h4{
-            text-align: center;
-            margin-top: 41px;
+        letter-spacing: 1px;
+        padding: 50px 0;
+        span{
+            position: relative;
+            &:before{
+                content: '/';
+                position: absolute;
+                top: -2px;
+                left: -29px;
+            }
+            &:after{
+                content: '/';
+                position: absolute;
+                top: -2px;
+                right: -29px;
+            }
         }
     }
-    .checkbox-inline:first-of-type{
-        margin-right: 10px;
+    .latest-items{
+        .item{
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
     }
-    .checkbox-inline + .checkbox-inline{
-        margin-left: 0;
-        margin-right: 10px;
+    .wanted-items{
+        .item{
+            width: 640px;
+            height: 448px;
+            float: left;
+            position: relative;
+            .link-block-wrap{
+                display: table;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            .link-block{
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                .title-wanted{
+                    font: 48px FuturaPTLight;
+                    color: white;
+                    text-transform: uppercase;
+                    padding: 35px 0;
+                    letter-spacing: 3.5px;
+                }
+                a{
+                    display: inline-block;
+                    font: 18px FuturaPTBook;
+                    color: white;
+                    border: 1px solid white;
+                    padding: 15px 15px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    letter-spacing: 3.5px;
+                }
+            }
+        }
     }
-    .checkbox-inline + .checkbox-inline:nth-child(22){
-        margin-right: 30px;
+    .brand-logo{
+        text-align: center;
+        a{
+            display: inline-block;
+            img{
+                display: inline-block;
+            }
+        }
+    }
+    .about{
+        p{
+            font: 16px/1.5 FuturaPTBook;
+            padding: 15px 0;
+            margin-bottom: 0;
+            &:first-of-type{
+                padding-top: 0;
+            }
+        }
     }
 }

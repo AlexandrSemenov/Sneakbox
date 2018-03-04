@@ -1,40 +1,36 @@
-<nav class="navbar-inverse header">
+<nav class="header">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Sneak.box</a>
+        <div class="col-md-3 logo">
+            {{--<a href="/"><img src="assets/img/logo-black.png" alt="Sneabe logo"></a>--}}
+            <a href="/"></a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+        <div class="col-md-3 menu">
+            <ul>
+                <li><a href="/catalog?category[]=5">Adidas</a></li>
+                <li><a href="/catalog?category[]=8">Nike</a></li>
+                <li><a href="/catalog?category[]=6">Asics</a></li>
+                <li><a href="/catalog">Все</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 search-registr">
+            <ul>
                 <li>
                     <form action="{{route('product.index')}}" method="get">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="form-control input-md" name="search" placeholder="Search"/>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-info btn-lg" type="submit">
-                                        <i class="glyphicon glyphicon-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
+                        <input type="text" name="search"/>
+                        <button type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
                     </form>
                 </li>
                 @if(Auth::check())
-                    <li><a href="{{route('product.create')}}">Добавить объявление</a></li>
-                    <li><a href="{{route('myprofile.index')}}">{{ Auth::user()->name }}</a></li>
-                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                    <li class="add-adv"><a href="{{route('product.create')}}">Добавить объявление</a></li>
+                    <li><a href="{{route('myprofile.index')}}">Профиль</a></li>
+                    <li><a href="{{ route('logout') }}">Выход</a></li>
                 @else
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('login.register') }}">Register</a></li>
+                    <li><a href="{{ route('login.register') }}">Регистрация</a></li>
+                    <li><a href="{{ route('login') }}">Вход</a></li>
                 @endif
             </ul>
-        </div><!-- /.nav-collapse -->
-    </div><!-- /.container -->
+        </div>
+    </div>
 </nav>

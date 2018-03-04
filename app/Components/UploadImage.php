@@ -45,8 +45,8 @@ class UploadImage
                         }
                         if ($file->move($image_destination, $image_name_new)) {
                             // ширина и высота нового изображения
-                            $width = 200;
-                            $height = 200;
+                            $width = 295;
+                            $height = 295;
 
                             // получение новых размеров
                             $image_location = $image_destination . $image_name_new;

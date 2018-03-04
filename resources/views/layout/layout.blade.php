@@ -12,9 +12,12 @@
 </head>
 <body>
 @include('tpl.header')
+
 <div class="container">
     @yield('content')
 </div>
+
+@include('tpl.footer')
 
 <script src="{{URL::to('assets/js/vue.min.js')}}"></script>
 <script src="{{ URL::to('assets/slick/slick.min.js') }}"></script>

@@ -1,0 +1,164 @@
+@font-face {
+    font-family: FuturaPTMedium;
+    src: url('/assets/fonts/Futura/FuturaPTMedium.otf');
+}
+@font-face {
+    font-family: FuturaPTBold;
+    src: url('/assets/fonts/Futura/FuturaPTBold.otf');
+}
+@font-face {
+    font-family: FuturaPTBook;
+    src: url('/assets/fonts/Futura/FuturaPTBook.otf');
+}
+@font-face {
+    font-family: FuturaPTHeavy;
+    src: url('/assets/fonts/Futura/FuturaPTHeavy.otf');
+}
+@font-face {
+    font-family: FuturaPTLight;
+    src: url('/assets/fonts/Futura/FuturaPTLight.otf');
+}
+
+body{
+    font-family: FuturaPTMedium;
+}
+
+$white: #fff;
+$black: #000;
+
+@mixin menu($padding-top, $padding-bottom) {
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+    ul{
+        padding-left: 0;
+        margin-bottom: 0;
+        li{
+            display: inline-block;
+            position: relative;
+            margin: 0 19px;
+            letter-spacing: 1px;
+            &:after{
+                content: '/';
+                font-size: 14px;
+                color: $black;
+                position: absolute;
+                top: 0;
+                right: -26px;
+            }
+            &:first-child{
+                margin-left: 0;
+            }
+            &:last-of-type{
+                margin-right: 0;
+                &:after{
+                    content: '';
+                }
+            }
+            a{
+                text-decoration: none;
+                font-size: 14px;
+                color: $black;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+/*----- Header style -----*/
+.header{
+    padding-top: 25px;
+    .logo{
+        a{
+            display: block;
+            width: 122px;
+            height: 44px;
+            background-image: url("/assets/img/logo-black.png");
+        }
+    }
+    .menu{
+        @include menu(12px, 12px);
+    }
+    .search-registr{
+        padding-top: 11px;
+        padding-bottom: 10px;
+        input{
+            background: inherit;
+            border: none;
+            border-bottom: 1px solid $black;
+            color: $black;
+            padding-left: 5px;
+            font-size: 14px;
+            font-family: FuturaPTLight;
+            letter-spacing: 1.5px;
+        }
+        button{
+            background: inherit;
+            border: none;
+            padding-left: 0;
+        }
+        ul{
+            margin-bottom: 0;
+            padding-left: 0;
+            li{
+                display: inline-block;
+                margin-right: 5px;
+                letter-spacing: 1px;
+                a{
+                    text-decoration: none;
+                    color: $black;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .glyphicon-search{
+            color: $black;
+            font-size: 15px;
+        }
+        .add-adv{
+            border: 1px solid $black;
+            padding: 0 6px;
+        }
+    }
+}
+/*----- END Header style -----*/
+
+/*----- Footer style -----*/
+.footer{
+    height: 125px;
+    background-color: #f6f6f6;
+    margin-top: 35px;
+    .menu{
+        @include menu(54px, 54px);
+    }
+    .logo{
+        text-align: center;
+        a{
+            display: inline-block;
+        }
+        img{
+            display: inline-block;
+            padding-top: 27px;
+            padding-bottom: 28px;
+        }
+        p{
+            font: 14px FuturaPTBook;
+            color: #909090;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+    .social{
+        text-align: right;
+        padding: 46px 0;
+        span{
+            padding: 0 5px;
+            &:last-of-type{
+                padding-right: 15px;
+            }
+            a{
+                display: inline-block;
+            }
+        }
+    }
+}
+/*----- END Footer style -----*/

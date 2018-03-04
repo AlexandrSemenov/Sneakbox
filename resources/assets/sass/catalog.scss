@@ -1,0 +1,33 @@
+/*----- Catalog page style -----*/
+.catalog-page{
+    color: #565a5c;
+    h4{
+        font-size: 17px;
+    }
+    form{
+        select{
+            margin: 10px 0;
+        }
+    }
+    .ui-slider{
+        margin-left: 8px;
+    }
+    .result{
+        text-align: center;
+        h4{
+            text-align: center;
+            margin-top: 41px;
+        }
+    }
+    .checkbox-inline:first-of-type{
+        margin-right: 10px;
+    }
+    .checkbox-inline + .checkbox-inline{
+        margin-left: 0;
+        margin-right: 10px;
+    }
+    .checkbox-inline + .checkbox-inline:nth-child(22){
+        margin-right: 30px;
+    }
+}
+/*----- END Catalog page style -----*/

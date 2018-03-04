@@ -16,7 +16,7 @@ use App\Models\Role;
 /**
  * Главная
  */
-Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
+Route::get('/', ['uses' => 'MainController@index', 'as' => 'main.index']);
 
 /**
  * Логинг

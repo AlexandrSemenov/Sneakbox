@@ -3,7 +3,7 @@
 @section('title', 'Sneakbox - маркетплейс кроссовок')
 @section('description', 'Sneakbox - Первый маркетплейс в Украине по продаже и покупке кроссовок')
 
-    <div class="row main-page" style="margin-top: 30px;">
+    <div class="row catalog-page" style="margin-top: 30px;">
         <div class="col-md-3">
             <form action="{{route('product.index')}}" method="get">
                 <label for="">Категория: </label>
@@ -81,7 +81,7 @@
                     @foreach($products as $product)
                         <div class="col-md-3" style="margin: 15px 0">
                             <a href="{{route('product.item', ['alias' => $product->alias])}}">
-                                <img src="{{$product->image}}" alt="image">
+                                <img class="img-responsive" src="{{$product->image}}" alt="image">
                             </a>
                         </div>
                     @endforeach
