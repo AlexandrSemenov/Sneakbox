@@ -6,9 +6,9 @@
         </div>
         <div class="col-md-3 menu">
             <ul>
-                <li><a href="/catalog?category[]=5">Adidas</a></li>
-                <li><a href="/catalog?category[]=8">Nike</a></li>
-                <li><a href="/catalog?category[]=6">Asics</a></li>
+                <li><a href="/catalog?category[]=1">Adidas</a></li>
+                <li><a href="/catalog?category[]=4">Nike</a></li>
+                <li><a href="/catalog?category[]=2">Asics</a></li>
                 <li><a href="/catalog">Все</a></li>
             </ul>
         </div>

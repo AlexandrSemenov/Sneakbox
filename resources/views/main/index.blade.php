@@ -22,7 +22,7 @@
             <div class="link-block-wrap">
                 <div class="link-block">
                     <div class="title-wanted">ADiDAS yeezy</div>
-                    <a href="/catalog?category[]=5">посмотреть все</a>
+                    <a href="/catalog?category[]=1">посмотреть все</a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="link-block-wrap">
                 <div class="link-block">
                     <div class="title-wanted">Undefeated Nike <br> Air Max 97</div>
-                    <a href="/catalog?category[]=8">посмотреть все</a>
+                    <a href="/catalog?category[]=4">посмотреть все</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="link-block-wrap">
                 <div class="link-block">
                     <div class="title-wanted">NIKE JORDAN</div>
-                    <a href="/catalog?category[]=8">посмотреть все</a>
+                    <a href="/catalog?category[]=4">посмотреть все</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
             <div class="link-block-wrap">
                 <div class="link-block">
                     <div class="title-wanted">adidas nmd</div>
-                    <a href="/catalog?category[]=5">посмотреть все</a>
+                    <a href="/catalog?category[]=1">посмотреть все</a>
                 </div>
             </div>
         </div>
@@ -58,32 +58,32 @@
     <div class="title"><span>бренды</span></div>
     <div class="row brand-logo">
         <div class="col-md-2">
-            <a href="/catalog?category[]=5">
+            <a href="/catalog?category[]=1">
                 <img src="assets/img/adidas-logo.png" alt="image">
             </a>
         </div>
         <div class="col-md-2">
-            <a href="/catalog?category[]=5">
+            <a href="/catalog?category[]=1">
                 <img src="assets/img/adidas-original-logo.png" alt="image">
             </a>
         </div>
         <div class="col-md-2">
-            <a href="/catalog?category[]=8">
+            <a href="/catalog?category[]=4">
                 <img src="assets/img/nike-logo.png" alt="image">
             </a>
         </div>
         <div class="col-md-2">
-            <a href="/catalog?category[]=8">
+            <a href="/catalog?category[]=4">
                 <img src="assets/img/jordan-logo.png" alt="image">
             </a>
         </div>
         <div class="col-md-2">
-            <a href="/catalog?category[]=5">
+            <a href="/catalog?category[]=1">
                 <img src="assets/img/yeeze.png" alt="image">
             </a>
         </div>
         <div class="col-md-2">
-            <a href="/catalog?category[]=13">
+            <a href="/catalog?category[]=9">
                 <img src="assets/img/saucony.png" alt="image">
             </a>
         </div>
