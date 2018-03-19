@@ -34,7 +34,8 @@ class User extends Authenticatable
     {
         $roles = User::find(Auth::user()->id)->roles()->first();
         if($roles->name == 'Admin')
-        return true;
+            return true;
+        return false;
     }
 
     public function messages()

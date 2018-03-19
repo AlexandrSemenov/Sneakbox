@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-4 logo">
             <a href="/">
-                <img src="assets/img/logo-black.png" alt="logo">
+                <img src="/assets/img/logo-black.png" alt="logo">
             </a>
             <p>© 2017 Sneabe, sneakers marketplace</p>
         </div>
@@ -19,12 +19,12 @@
                 <div class="social-block">
                     <span>
                         <a href="">
-                            <img src="assets/img/fb-logo.png" alt="social">
+                            <img src="/assets/img/fb-logo.png" alt="social">
                         </a>
                     </span>
                         <span>
                         <a href="">
-                            <img src="assets/img/insta-logo.png" alt="social">
+                            <img src="/assets/img/insta-logo.png" alt="social">
                         </a>
                     </span>
                 </div>

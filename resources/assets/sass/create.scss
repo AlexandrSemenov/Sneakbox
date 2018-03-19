@@ -1,10 +1,101 @@
 /*----- Create page style -----*/
 
-.create-page{
-    .image-wrapp{
-        width: 200px;
+.create-page {
+    padding-bottom: 50px;
+    .title {
+        text-align: left;
+        font: 18px FuturaPTHeavy;
+        color: #000;
+        text-transform: uppercase;
+        padding: 44px 0 44px 35px;
+    }
+    .sub-title{
+        font: 11px FuturaPTMedium;
+        color: #a9a9a9;
+        text-transform: uppercase;
+        padding-bottom: 18px;
+        letter-spacing: 1px;
+    }
+    .info-block{
+        padding-top: 33px;
+        margin-left: 20px;
+        .sub-title{
+            padding-bottom: 0;
+        }
+        input{
+            width: 100%;
+            padding-bottom: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+            outline:none;
+            &[placeholder]{
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+        textarea{
+            width: 100%;
+            padding-bottom: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+            resize: none;
+            outline:none;
+            &[placeholder]{
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+        select{
+            width: 100%;
+            padding-bottom: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+            font: 14px FuturaPTMedium;
+            text-transform: uppercase;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url("/assets/img/angle-down.png") 96%/3.5% no-repeat;
+            cursor: pointer;
+            text-decoration: none;
+            outline:none;
+        }
+        .checkbox{
+            label{
+                padding-left: 0;
+            }
+            input[type="checkbox"]{
+                width: 12%;
+                margin-left: 0;
+                cursor: pointer;
+                outline:none;
+            }
+        }
+        .btn{
+            width: auto;
+            background: black;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 15px 20px;
+            line-height: 1;
+            border-bottom: none;
+        }
+    }
+    .main-image{
+        .sub-title{
+            padding-left: 30px;
+        }
+    }
+    .image-wrapp {
+        width: 124px;
+        height: 124px;
+        overflow-y: hidden;
         position: relative;
-        .close-btn{
+        margin: 0 auto;
+        img {
+            width: 100%;
+        }
+        .close-btn {
             display: none;
             width: 20px;
             height: 20px;
@@ -15,15 +106,63 @@
             right: 5px;
             cursor: pointer;
         }
-        img{
-           width: 100%;
+        img {
+            width: 100%;
         }
-        &:hover > .close-btn{
+        &:hover > .close-btn {
             display: block;
         }
     }
-    .prev-image{
+    .prev-image {
         width: 200px;
+    }
+    .gallery-foto-block {
+        .form-group {
+            width: 124px;
+            height: 124px;
+            float: left;
+            margin-right: 25px;
+            margin-bottom: 20px;
+        }
+        &:before{
+            content: '';
+            display: table;
+        }
+        &:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+    .file-upload {
+        label {
+            display: table;
+            width: 123px;
+            height: 123px;
+            margin: 0 auto;
+            border: 1px dashed black;
+            text-align: center;
+            cursor: pointer;
+            .add-block {
+                display: table-cell;
+                vertical-align: middle;
+                font: 14px FuturaPTMedium;
+                text-transform: uppercase;
+                .plus {
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid black;
+                    border-radius: 50%;
+                    font-size: 30px;
+                    line-height: 21px;
+                    font-family: FuturaPTLight;
+                    margin: 9px auto;
+                }
+            }
+        }
+        input[type="file"] {
+            display: none;
+        }
     }
 }
 

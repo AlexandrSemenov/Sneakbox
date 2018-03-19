@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
+use App\Models\Notification;
 
 class CreateAdmin extends Command
 {
@@ -35,6 +37,15 @@ class CreateAdmin extends Command
         $user->city = 'Kiev';
         $user->password = Hash::make('sLamUB4sDYhLuRdU');
         $user->save();
+
+        $role = new Role();
+        $role = $role::find(1);
+
+        $role->users()->save($user);
+
+        $notification = new Notification();
+        $notification->user_id = $user->id;
+        $notification->save();
 
         echo "Admin was created" . PHP_EOL;
     }

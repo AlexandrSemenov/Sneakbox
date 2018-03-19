@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         if(Auth::user())
         {
-            $products = Product::where('user_id', Auth::user()->id)->paginate(10);
+            $products = Product::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(10);
 
             return view('myprofile.index', ['products' => $products]);
         }

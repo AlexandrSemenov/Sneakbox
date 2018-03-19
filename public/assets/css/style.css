@@ -19,11 +19,14 @@
   src: url("/assets/fonts/Futura/FuturaPTLight.otf"); }
 
 body {
-  font-family: FuturaPTMedium; }
+  font-family: FuturaPTMedium;
+  background: #f6f6f6; }
 
 /*----- Header style -----*/
 .header {
-  padding-top: 25px; }
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background: white; }
   .header .logo a {
     display: block;
     width: 122px;
@@ -151,115 +154,118 @@ body {
         display: inline-block; }
 
 /*----- END Footer style -----*/
+.content {
+  background: white;
+  margin-top: 25px; }
 
 
-.main .header-wrapp {
-  width: 100%;
-  height: 500px;
-  background-image: url("/assets/img/main-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  position: relative; }
-  .main .header-wrapp .header .logo a {
-    display: block;
-    width: 122px;
-    height: 44px;
-    background-image: url("/assets/img/logo-white.png"); }
-  .main .header-wrapp .header .menu ul li:after {
-    color: #fff; }
-  .main .header-wrapp .header .menu ul li a {
-    color: #fff; }
-  .main .header-wrapp .header .search-registr input {
-    border-bottom: 1px solid #fff;
-    color: #fff; }
-  .main .header-wrapp .header .search-registr ul li a {
-    color: #fff; }
-  .main .header-wrapp .header .search-registr .glyphicon-search {
-    color: #fff; }
-  .main .header-wrapp .header .search-registr .add-adv {
-    border: 1px solid #fff; }
-  .main .header-wrapp .stripe {
-    width: 95%;
-    height: 28px;
-    background: white;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto; }
-
-.main .title {
-  font: 18px FuturaPTMedium;
-  color: black;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 1px;
-  padding: 50px 0; }
-  .main .title span {
-    position: relative; }
-    .main .title span:before {
-      content: '/';
-      position: absolute;
-      top: -2px;
-      left: -29px; }
-    .main .title span:after {
-      content: '/';
-      position: absolute;
-      top: -2px;
-      right: -29px; }
-
-.main .latest-items .item {
-  padding-top: 15px;
-  padding-bottom: 15px; }
-
-.main .wanted-items .item {
-  width: 640px;
-  height: 448px;
-  float: left;
-  position: relative; }
-  .main .wanted-items .item .link-block-wrap {
-    display: table;
+.main {
+  background: white; }
+  .main .header-wrapp {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto; }
-  .main .wanted-items .item .link-block {
-    display: table-cell;
-    vertical-align: middle;
+    height: 500px;
+    background-image: url("/assets/img/main-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative; }
+    .main .header-wrapp .header {
+      padding-bottom: 0;
+      background: none; }
+      .main .header-wrapp .header .logo a {
+        display: block;
+        width: 122px;
+        height: 44px;
+        background-image: url("/assets/img/logo-white.png"); }
+      .main .header-wrapp .header .menu ul li:after {
+        color: #fff; }
+      .main .header-wrapp .header .menu ul li a {
+        color: #fff; }
+      .main .header-wrapp .header .search-registr input {
+        border-bottom: 1px solid #fff;
+        color: #fff; }
+      .main .header-wrapp .header .search-registr ul li a {
+        color: #fff; }
+      .main .header-wrapp .header .search-registr .glyphicon-search {
+        color: #fff; }
+      .main .header-wrapp .header .search-registr .add-adv {
+        border: 1px solid #fff; }
+    .main .header-wrapp .stripe {
+      width: 95%;
+      height: 28px;
+      background: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto; }
+  .main .title {
+    font: 18px FuturaPTMedium;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 50px 0; }
+    .main .title span {
+      position: relative; }
+      .main .title span:before {
+        content: '/';
+        position: absolute;
+        top: -2px;
+        left: -29px; }
+      .main .title span:after {
+        content: '/';
+        position: absolute;
+        top: -2px;
+        right: -29px; }
+  .main .latest-items .item {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  .main .wanted-items .item {
+    width: 640px;
+    height: 448px;
+    float: left;
+    position: relative; }
+    .main .wanted-items .item .link-block-wrap {
+      display: table;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto; }
+    .main .wanted-items .item .link-block {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center; }
+      .main .wanted-items .item .link-block .title-wanted {
+        font: 48px FuturaPTLight;
+        color: white;
+        text-transform: uppercase;
+        padding: 35px 0;
+        letter-spacing: 3.5px; }
+      .main .wanted-items .item .link-block a {
+        display: inline-block;
+        font: 18px FuturaPTBook;
+        color: white;
+        border: 1px solid white;
+        padding: 15px 15px;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 3.5px; }
+  .main .brand-logo {
     text-align: center; }
-    .main .wanted-items .item .link-block .title-wanted {
-      font: 48px FuturaPTLight;
-      color: white;
-      text-transform: uppercase;
-      padding: 35px 0;
-      letter-spacing: 3.5px; }
-    .main .wanted-items .item .link-block a {
-      display: inline-block;
-      font: 18px FuturaPTBook;
-      color: white;
-      border: 1px solid white;
-      padding: 15px 15px;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 3.5px; }
-
-.main .brand-logo {
-  text-align: center; }
-  .main .brand-logo a {
-    display: inline-block; }
-    .main .brand-logo a img {
+    .main .brand-logo a {
       display: inline-block; }
-
-.main .about p {
-  font: 16px/1.5 FuturaPTBook;
-  padding: 15px 0;
-  margin-bottom: 0; }
-  .main .about p:first-of-type {
-    padding-top: 0; }
+      .main .brand-logo a img {
+        display: inline-block; }
+  .main .about p {
+    font: 16px/1.5 FuturaPTBook;
+    padding: 15px 0;
+    margin-bottom: 0; }
+    .main .about p:first-of-type {
+      padding-top: 0; }
 
 /*----- Profile page style -----*/
 .tab-content, .tab-message-content {
@@ -377,26 +383,136 @@ body {
 /*----- End Edit page style -----*/
 
 /*----- Create page style -----*/
-.create-page .image-wrapp {
-  width: 200px;
-  position: relative; }
-  .create-page .image-wrapp .close-btn {
-    display: none;
-    width: 20px;
-    height: 20px;
-    background: url("../img/close_btn.png");
-    background-size: contain;
-    position: absolute;
-    top: 5px;
-    right: 5px;
+.create-page {
+  padding-bottom: 50px; }
+  .create-page .title {
+    text-align: left;
+    font: 18px FuturaPTHeavy;
+    color: #000;
+    text-transform: uppercase;
+    padding: 44px 0 44px 35px; }
+  .create-page .sub-title {
+    font: 11px FuturaPTMedium;
+    color: #a9a9a9;
+    text-transform: uppercase;
+    padding-bottom: 18px;
+    letter-spacing: 1px; }
+  .create-page .info-block {
+    padding-top: 33px;
+    margin-left: 20px; }
+    .create-page .info-block .sub-title {
+      padding-bottom: 0; }
+    .create-page .info-block input {
+      width: 100%;
+      padding-bottom: 10px;
+      border: none;
+      border-bottom: 1px solid black;
+      outline: none; }
+      .create-page .info-block input[placeholder] {
+        text-transform: uppercase;
+        letter-spacing: 1px; }
+    .create-page .info-block textarea {
+      width: 100%;
+      padding-bottom: 10px;
+      border: none;
+      border-bottom: 1px solid black;
+      resize: none;
+      outline: none; }
+      .create-page .info-block textarea[placeholder] {
+        text-transform: uppercase;
+        letter-spacing: 1px; }
+    .create-page .info-block select {
+      width: 100%;
+      padding-bottom: 10px;
+      border: none;
+      border-bottom: 1px solid black;
+      font: 14px FuturaPTMedium;
+      text-transform: uppercase;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: url("/assets/img/angle-down.png") 96%/3.5% no-repeat;
+      cursor: pointer;
+      text-decoration: none;
+      outline: none; }
+    .create-page .info-block .checkbox label {
+      padding-left: 0; }
+    .create-page .info-block .checkbox input[type="checkbox"] {
+      width: 12%;
+      margin-left: 0;
+      cursor: pointer;
+      outline: none; }
+    .create-page .info-block .btn {
+      width: auto;
+      background: black;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 15px 20px;
+      line-height: 1;
+      border-bottom: none; }
+  .create-page .main-image .sub-title {
+    padding-left: 30px; }
+  .create-page .image-wrapp {
+    width: 124px;
+    height: 124px;
+    overflow-y: hidden;
+    position: relative;
+    margin: 0 auto; }
+    .create-page .image-wrapp img {
+      width: 100%; }
+    .create-page .image-wrapp .close-btn {
+      display: none;
+      width: 20px;
+      height: 20px;
+      background: url("../img/close_btn.png");
+      background-size: contain;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer; }
+    .create-page .image-wrapp img {
+      width: 100%; }
+    .create-page .image-wrapp:hover > .close-btn {
+      display: block; }
+  .create-page .prev-image {
+    width: 200px; }
+  .create-page .gallery-foto-block .form-group {
+    width: 124px;
+    height: 124px;
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 20px; }
+  .create-page .gallery-foto-block:before {
+    content: '';
+    display: table; }
+  .create-page .gallery-foto-block:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .create-page .file-upload label {
+    display: table;
+    width: 123px;
+    height: 123px;
+    margin: 0 auto;
+    border: 1px dashed black;
+    text-align: center;
     cursor: pointer; }
-  .create-page .image-wrapp img {
-    width: 100%; }
-  .create-page .image-wrapp:hover > .close-btn {
-    display: block; }
-
-.create-page .prev-image {
-  width: 200px; }
+    .create-page .file-upload label .add-block {
+      display: table-cell;
+      vertical-align: middle;
+      font: 14px FuturaPTMedium;
+      text-transform: uppercase; }
+      .create-page .file-upload label .add-block .plus {
+        width: 24px;
+        height: 24px;
+        border: 1px solid black;
+        border-radius: 50%;
+        font-size: 30px;
+        line-height: 21px;
+        font-family: FuturaPTLight;
+        margin: 9px auto; }
+  .create-page .file-upload input[type="file"] {
+    display: none; }
 
 /*----- END Create page style -----*/
 

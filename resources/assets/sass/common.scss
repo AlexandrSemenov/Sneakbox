@@ -21,6 +21,7 @@
 
 body{
     font-family: FuturaPTMedium;
+    background: #f6f6f6;
 }
 
 $white: #fff;
@@ -67,6 +68,8 @@ $black: #000;
 /*----- Header style -----*/
 .header{
     padding-top: 25px;
+    padding-bottom: 25px;
+    background: white;
     .logo{
         a{
             display: block;
@@ -162,3 +165,8 @@ $black: #000;
     }
 }
 /*----- END Footer style -----*/
+
+.content{
+    background: white;
+    margin-top: 25px;
+}

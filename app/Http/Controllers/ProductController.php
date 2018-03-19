@@ -219,7 +219,7 @@ class ProductController extends Controller
     {
         $product = Product::where('alias', '=', $alias)->first();
 
-        if (Auth::user()->roles()->first()->name == 'Admin' || $product->user_id == Auth::user()->id) {
+        if (Auth::user()->isAdmin() || $product->user_id == Auth::user()->id) {
             $product->delete();
             return redirect()->back();
         } else {

@@ -27,34 +27,6 @@ jQuery(document).ready(function(){
     });
 
 
-
-
-    /*----- Подгужаем боьлше полей для галереи -----*/
-    //var index = 2;
-    //$('.more-gallery-input').on('click', function(){
-    //    if(index <= 8)
-    //    {
-    //        $('.gallery-input-block').append(
-    //            "<div id='gallery-image-"+index+"' class='form-group'>"
-    //            + "<lable id='gallery'>Фото " + index + "</lable>"
-    //            + "<div v-if='!image'></div>"
-    //            + "<div v-else>"
-    //            + "<div class='image-wrapp'>"
-    //            + "<div class='close-btn' v-on:click='removeImage'></div>"
-    //            + "<img class='prev-image' v-bind:src='image' alt='preview-image'>"
-    //            + "</div>"
-    //            + "</div>"
-    //            + "<input type='file' v-on:change='onFileChange' id='gallery' name='gallery[]'>"
-    //            + "</div>");
-    //        index++;
-    //
-    //        /* скрываем кнопку */
-    //        (index == 9)? $('.more-gallery-input').css('display', 'none') : '';
-    //    }
-    //});
-
-    /*----- End Подгужаем боьлше полей для галереи -----*/
-
     /*----- Редактируем галерею -----*/
 
     $('.gallery').on('change', function(){
@@ -76,6 +48,7 @@ var app = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
+            $('#main-image .file-upload label').hide();
             $('#main-image input').hide();
         },
         createImage: function(file){
@@ -91,11 +64,10 @@ var app = new Vue({
         },
         removeImage: function (e){
             this.image = '';
-            $('#main-image input').show().val('');
+            $('#main-image .file-upload label').show();
         }
     }
 });
-
 /*----- END Подгружаем заглавное фото -----*/
 
 /*----- Подгружаем фото галереи -----*/
@@ -108,10 +80,10 @@ var galleryImage = new Vue({
     },
     methods: {
         onFileChange: function(e){
-
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-1 .file-upload label').hide();
+            $('#gallery-image-1 input').hide();
         },
         createImage: function(file){
 
@@ -126,7 +98,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-1 input').show().val('');
+            $('#gallery-image-1 .file-upload label').show();
         }
     }
 });
@@ -141,7 +113,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-2 .file-upload label').hide();
+            $('#gallery-image-2 input').hide();
         },
         createImage: function(file){
 
@@ -156,7 +129,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-2 input').show().val('');
+            $('#gallery-image-2 .file-upload label').show();
         }
     }
 });
@@ -170,7 +143,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-3 .file-upload label').hide();
+            $('#gallery-image-3 input').hide();
         },
         createImage: function(file){
 
@@ -185,7 +159,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-3 input').show().val('');
+            $('#gallery-image-3 .file-upload label').show();
         }
     }
 });
@@ -199,7 +173,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-4 .file-upload label').hide();
+            $('#gallery-image-4 input').hide();
         },
         createImage: function(file){
 
@@ -214,7 +189,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-4 input').show().val('');
+            $('#gallery-image-4 .file-upload label').show();
         }
     }
 });
@@ -228,7 +203,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-5 .file-upload label').hide();
+            $('#gallery-image-5 input').hide();
         },
         createImage: function(file){
 
@@ -243,7 +219,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-5 input').show().val('');
+            $('#gallery-image-5 .file-upload label').show();
         }
     }
 });
@@ -257,7 +233,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-6 .file-upload label').hide();
+            $('#gallery-image-6 input').hide();
         },
         createImage: function(file){
 
@@ -272,7 +249,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-6 input').show().val('');
+            $('#gallery-image-6 .file-upload label').show();
         }
     }
 });
@@ -286,7 +263,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-7 .file-upload label').hide();
+            $('#gallery-image-7 input').hide();
         },
         createImage: function(file){
 
@@ -301,7 +279,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-7 input').show().val('');
+            $('#gallery-image-7 .file-upload label').show();
         }
     }
 });
@@ -315,7 +293,8 @@ var galleryImage = new Vue({
         onFileChange: function(e){
             var file = e.target.files;
             (!file.length)? false : this.createImage(file[0]);
-            $(e.target).hide();
+            $('#gallery-image-8 .file-upload label').hide();
+            $('#gallery-image-8 input').hide();
         },
         createImage: function(file){
 
@@ -330,7 +309,7 @@ var galleryImage = new Vue({
         },
         removeImage: function(){
             this.image = '';
-            $('#gallery-image-8 input').show().val('');
+            $('#gallery-image-8 .file-upload label').show();
         }
     }
 });

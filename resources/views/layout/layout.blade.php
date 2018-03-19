@@ -13,7 +13,7 @@
 <body>
 @include('tpl.header')
 
-<div class="container">
+<div class="container content">
     @yield('content')
 </div>
 
