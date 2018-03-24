@@ -66,22 +66,24 @@
         <div class="col-md-2 main-image">
             <div id="main-image" class="form-group {{$errors->first('image')?'has-error':''}}">
                 <div class="sub-title">заглавное фото</div>
-                <div v-if="!image"></div>
+                <div v-if="!image">
+                    <div class="file-upload">
+                        <label for="label-main">
+                            <div class="add-block">
+                                <div class="plus">+</div>
+                                Добавить
+                            </div>
+                            <input type="file" id="label-main" v-on:change="onFileChange" name="image">
+                        </label>
+                    </div>
+                </div>
                 <div v-else>
                     <div class="image-wrapp">
                         <div class="close-btn" v-on:click="removeImage"></div>
-                        <img class="prev-image" v-bind:src="image" alt="preview-image">
+                        <img class="prev-image" v-bind:src="image">
                     </div>
                 </div>
-                <div class="file-upload">
-                    <label for="label-main">
-                        <div class="add-block">
-                            <div class="plus">+</div>
-                            Добавить
-                        </div>
-                        <input type="file" id="label-main" v-on:change="onFileChange" name="image">
-                    </label>
-                </div>
+
                 @if ($errors->first('image'))
                     <span class="help-block">{{  $errors->first('image') }}</span>
                 @endif
@@ -92,22 +94,24 @@
             <div class="gallery-foto-block">
                 <!-- Gallery image 1 -->
                 <div id="gallery-image-1" class="form-group {{$errors->first('gallery.0')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-1">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-1" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-1">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-1" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.0'))
                         <span class="help-block">{{  $errors->first('gallery.0') }}</span>
                     @endif
@@ -116,22 +120,24 @@
 
                 <!-- Gallery image 2 -->
                 <div id="gallery-image-2" class="form-group {{$errors->first('gallery.1')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-2">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-2" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-2">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-2" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.1'))
                         <span class="help-block">{{  $errors->first('gallery.1') }}</span>
                     @endif
@@ -140,22 +146,24 @@
 
                 <!-- Gallery image 3 -->
                 <div id="gallery-image-3" class="form-group {{$errors->first('gallery.2')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-3">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-3" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-3">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-3" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.2'))
                         <span class="help-block">{{  $errors->first('gallery.2') }}</span>
                     @endif
@@ -164,22 +172,24 @@
 
                 <!-- Gallery image 4 -->
                 <div id="gallery-image-4" class="form-group {{$errors->first('gallery.3')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-4">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-4" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-4">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-4" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.3'))
                         <span class="help-block">{{  $errors->first('gallery.3') }}</span>
                     @endif
@@ -188,22 +198,24 @@
 
                 <!-- Gallery image 5 -->
                 <div id="gallery-image-5" class="form-group {{$errors->first('gallery.4')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-5">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-5" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-5">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-5" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.4'))
                         <span class="help-block">{{  $errors->first('gallery.4') }}</span>
                     @endif
@@ -212,22 +224,24 @@
 
                 <!-- Gallery image 6 -->
                 <div id="gallery-image-6" class="form-group {{$errors->first('gallery.5')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-6">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-6" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-6">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-6" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.5'))
                         <span class="help-block">{{  $errors->first('gallery.5') }}</span>
                     @endif
@@ -236,22 +250,24 @@
 
                 <!-- Gallery image 7 -->
                 <div id="gallery-image-7" class="form-group {{$errors->first('gallery.6')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-7">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-7" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-7">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-7" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.6'))
                         <span class="help-block">{{  $errors->first('gallery.6') }}</span>
                     @endif
@@ -260,22 +276,24 @@
 
                 <!-- Gallery image 8 -->
                 <div id="gallery-image-8" class="form-group {{$errors->first('gallery.7')?'has-error':''}}">
-                    <div v-if="!image"></div>
+                    <div v-if="!image">
+                        <div class="file-upload">
+                            <label for="label-sub-8">
+                                <div class="add-block">
+                                    <div class="plus">+</div>
+                                    Добавить
+                                </div>
+                                <input type="file" id="label-sub-8" v-on:change="onFileChange" name="gallery[]">
+                            </label>
+                        </div>
+                    </div>
                     <div v-else>
                         <div class="image-wrapp">
                             <div class="close-btn" v-on:click="removeImage"></div>
-                            <img class="prev-image" v-bind:src="image" alt="preview-image">
+                            <img class="prev-image" v-bind:src="image">
                         </div>
                     </div>
-                    <div class="file-upload">
-                        <label for="label-sub-8">
-                            <div class="add-block">
-                                <div class="plus">+</div>
-                                Добавить
-                            </div>
-                            <input type="file" id="label-sub-8" v-on:change="onFileChange" name="gallery[]">
-                        </label>
-                    </div>
+
                     @if ($errors->first('gallery.7'))
                         <span class="help-block">{{  $errors->first('gallery.7') }}</span>
                     @endif

@@ -53,7 +53,6 @@ var app = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -87,7 +86,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -118,7 +116,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -148,7 +145,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -178,7 +174,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -208,7 +203,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -238,7 +232,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -268,7 +261,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -298,7 +290,6 @@ var galleryImage = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -329,7 +320,6 @@ var galleryImageEditMain = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -360,7 +350,6 @@ var galleryImageEdit0 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -389,7 +378,6 @@ var galleryImageEdit1 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -418,7 +406,6 @@ var galleryImageEdit2 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -447,7 +434,6 @@ var galleryImageEdit3 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -476,7 +462,6 @@ var galleryImageEdit4 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -505,7 +490,6 @@ var galleryImageEdit5 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -534,7 +518,6 @@ var galleryImageEdit6 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
@@ -563,7 +546,6 @@ var galleryImageEdit7 = new Vue({
         },
         createImage: function(file){
 
-            var image = new Image();
             var reader = new FileReader();
             var vm = this;
 
