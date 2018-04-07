@@ -24,7 +24,7 @@
                 @endif
             </div>
             <div class="form-group {{$errors->first('description')?'has-error':''}}">
-                <textarea type="text" name="description"
+                <textarea type="text" name="description" rows="7"
                           placeholder="Описание*">{{Request::old('description')}}</textarea>
                 @if ($errors->first('description'))
                     <span class="help-block">{{  $errors->first('description') }}</span>

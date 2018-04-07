@@ -113,19 +113,33 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, UploadImage $uploadimage, $alias)
     {
-
-
-        $this->validate($request, [
+        $rules = [
             'title' => 'required|regex:/^[(a-zA-Za-zА-Яа-яЁёґєії`´ʼ’ʼ"&-.\'’Z0-9\s)]+$/u',
             'price' => 'required|integer',
-            'description' => 'required'
-        ], [
+            'description' => 'required',
+            'image' => 'mimes:jpeg,png|max:1500',
+        ];
+        $messages = [
             'title.required' => 'Необходимо заполнить заголовок',
             'title.regex' => 'Заголовок может содержать только буквы и цифры',
             'price.required' => 'Необходимо указать цену',
             'price.integer' => 'Поле цена должно иметь корректное целочисленное значение',
-            'description.required' => 'Добавьте описание для товара'
-        ]);
+            'description.required' => 'Добавьте описание для товара',
+            'image.mimes' => 'Тип изображение должен быть jpeg или png',
+            'image.max' => 'Изображение не может быть больше 1.5 мегабайт',
+            'gallery.mimes' => 'Тип изображение должен быть jpeg или png',
+            'gallery.max' => 'Изображение не может быть больше 1.5 мегабайт.'
+        ];
+
+        $count = count($request['gallery']) - 1;
+        foreach (range(0, $count) as $index) {
+            $rules['gallery.' . $index] = 'mimes:jpeg,png|max:1500';
+            $messages['gallery.' . $index . '.mimes'] = 'Тип изображение должен быть jpeg или png';
+            $messages['gallery.' . $index . '.max'] = 'Изображение не может быть больше 1.5 мегабайт';
+        }
+
+
+        $this->validate($request, $rules, $messages);
 
         if (Auth::user()) {
             $product = Product::where('alias', $alias)->first();

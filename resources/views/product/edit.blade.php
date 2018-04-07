@@ -65,7 +65,7 @@
 
         <div class="col-md-2 main-image">
             <div class="sub-title">заглавное фото</div>
-            <div id="gallery-image-edit-main" data-img="{{$product->image}}" class="form-group image-item">
+            <div id="gallery-image-edit-main" data-img="{{$product->image}}" class="form-group image-item {{$errors->first('image')?'has-error':''}}">
                 <div v-if="!image"></div>
                 <div v-else>
                     <div class="image-wrapp">
@@ -83,6 +83,9 @@
                         <input id="label-main" class="gallery" type="file" v-on:change="onFileChange" name="image">
                     </label>
                 </div>
+                @if ($errors->first('image'))
+                    <span class="help-block">{{  $errors->first('image') }}</span>
+                @endif
             </div>
         </div>
 
@@ -91,8 +94,7 @@
 
             <div class="gallery-foto-block">
                 @foreach($images as $key => $image)
-                    <div id="gallery-image-edit-{{$key}}" data-img="{{$image['image_path']}}"
-                         class="form-group image-item">
+                    <div id="gallery-image-edit-{{$key}}" data-img="{{$image['image_path']}}" class="form-group image-item {{$errors->first("gallery.$key")?'has-error':''}}">
                         <div v-if="!image"></div>
                         <div v-else>
                             <div class="image-wrapp">
@@ -112,6 +114,9 @@
                                 <input class="oldgallery" type="hidden" name="oldgallery[]" value="">
                             </label>
                         </div>
+                        @if ($errors->first("gallery.$key"))
+                            <span class="help-block">{{  $errors->first("gallery.$key") }}</span>
+                        @endif
                     </div>
                 @endforeach
             </div>
